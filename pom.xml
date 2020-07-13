@@ -38,6 +38,9 @@
         <mybatis.starter.version>1.3.2</mybatis.starter.version>
         <commons.net.version>3.6</commons.net.version>
         <jsch.version>0.1.54</jsch.version>
+        <quartz.version>2.2.1</quartz.version>
+        <quartz-jobs.version>2.2.1</quartz-jobs.version>
+        <spring.context.support.version>5.2.6.RELEASE</spring.context.support.version>
     </properties>
 
     <dependencyManagement>
@@ -47,33 +50,28 @@
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${starter.web.version}</version>
             </dependency>
-
             <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
-
             <!-- json格式化对象[JSON] -->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.JSON.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${validation.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.starter.version}</version>
             </dependency>
-
             <!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
             <!-- 不支持通过协议SSH2进行SFTP连接 -->
             <dependency>
@@ -81,15 +79,44 @@
                 <artifactId>commons-net</artifactId>
                 <version>${commons.net.version}</version>
             </dependency>
-
             <!-- 支持通过协议SSH2进行SFTP连接 -->
             <dependency>
                 <groupId>com.jcraft</groupId>
                 <artifactId>jsch</artifactId>
                 <version>${jsch.version}</version>
             </dependency>
+            <!-- quartz任务调度相关依赖 -->
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz</artifactId>
+                <version>${quartz.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.quartz-scheduler</groupId>
+                <artifactId>quartz-jobs</artifactId>
+                <version>${quartz-jobs.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.context.support.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-quartz -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-quartz</artifactId>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+    <!--<dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
+        </dependency>
+    </dependencies>-->
 
     <!-- 多环境配置 -->
     <profiles>
