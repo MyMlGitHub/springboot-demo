@@ -7,4 +7,6 @@ public interface AsyncService {
      */
     void executeAsync(int i);
 
+    void acquire();
+
 }

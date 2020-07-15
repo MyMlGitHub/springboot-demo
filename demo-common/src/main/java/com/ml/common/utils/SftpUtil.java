@@ -30,9 +30,8 @@ public class SftpUtil {
      * @param port 端口
      * @param userName 用户
      * @param password 密码
-     * @return FTPClient对象
      */
-    public static ChannelSftp getConnect(String host, String port, String userName, String password) throws Exception {
+    public static void getConnect(String host, String port, String userName, String password) throws Exception {
         try {
             JSch jsch = new JSch();
             // 获取sshSession
@@ -51,9 +50,8 @@ public class SftpUtil {
             logger.debug("success ..........");
         } catch (Exception e) {
             e.printStackTrace();
-            throw new Exception("连接sftp服务器异常。。。。。。。。");
+            throw new Exception("连接sftp服务器异常..........");
         }
-        return ftpClient;
     }
 
     /**
@@ -115,7 +113,7 @@ public class SftpUtil {
     public static void uploadFile(String upload_path, String ftp_path, String newFileName) {
         FileInputStream fis = null;
         try {
-            fis = new FileInputStream(new File(upload_path));
+            fis = new FileInputStream(new File(upload_path, newFileName));
             ftpClient.cd(ftp_path);
             ftpClient.put(fis, newFileName);
         } catch (Exception e) {
@@ -152,11 +150,9 @@ public class SftpUtil {
 //            getConnect("180.76.176.197", "22", "root", "JY^Court)1025%");
 //            download("/home/testuser/test/ceshi2/","C:/Users/Downloads/log/","38357_mediate_1591695318973.xml","38357_mediate_202006181529.xml");
 
-            ChannelSftp sftp = getConnect("180.76.184.90", "22", "root", "Ebeatcourt@2018");
-            System.out.println(sftp);
-            download("/data/law_project/pics/2020/2020-07-01/applicant/","C:/Users/Administrator/Downloads/log/","2020_1593567738106_applicant_7022.jpg","2020_1593567738106_applicant_7022.jpg");
-
-            uploadFile("C:/Users/Administrator/Downloads/log/","/data/law_project/pics/2020/2020-07-01/applicant/","2020_1593567738106_applicant_7022.jpg");
+            getConnect("180.76.184.90", "22", "root", "Ebeatcourt@2018");
+            download("/data/law_project/pics/2020/2020-07-01/applicant/","C:/Users/Administrator/Downloads/log/","2020_1593598920877_applicant_6462.jpg","2020_1593567738106_applicant_2222.jpg");
+            uploadFile("C:/Users/Administrator/Downloads/log/","/data/law_project/pics/2020/2020-07-01/applicant/","2020_1593567738106_applicant_2222.jpg");
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

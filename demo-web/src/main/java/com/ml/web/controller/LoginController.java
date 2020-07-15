@@ -24,12 +24,20 @@ public class LoginController {
     @Resource
     private AsyncService asyncService;
 
+
     @GetMapping("/async")
     public String asyncThread() {
         for (int i = 0; i < 100; i++) {
             asyncService.executeAsync(i);
         }
-        return "ok";
+        asyncService.executeAsync(5);
+        return "async ok";
+    }
+
+    @GetMapping("/acquire")
+    public String acquire() {
+        asyncService.acquire();
+        return "acquire ok";
     }
 
     @RequestMapping("/toLogin")

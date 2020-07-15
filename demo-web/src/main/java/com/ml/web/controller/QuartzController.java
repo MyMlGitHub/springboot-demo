@@ -1,8 +1,7 @@
 package com.ml.web.controller;
 
-import com.ml.common.quartz.CronUtil;
-import com.ml.common.quartz.QuartzUtils;
 import com.ml.common.quartz.QuartzJobBean;
+import com.ml.common.quartz.QuartzUtils;
 import org.quartz.Scheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,7 @@ import javax.annotation.Resource;
 @Controller
 @RequestMapping("/quartz")
 public class QuartzController {
-    //注入任务调度
+    //注入定时任务调度器
     @Resource
     private Scheduler scheduler;
 
@@ -22,9 +21,9 @@ public class QuartzController {
     public String createJob(QuartzJobBean quartzJobBean) {
         try {
             //进行测试所以写死
-            quartzJobBean.setJobClass("com.ml.service.quartz.MyTask1");
+            quartzJobBean.setJobClass("com.ml.service.quartz.timingReadCaseData");
             quartzJobBean.setJobName("test1");
-            quartzJobBean.setCron("0/10 * * * * ? ");
+            quartzJobBean.setCron("0/60 * * * * ? ");
             QuartzUtils.createScheduleJob(scheduler, quartzJobBean, null);
             System.out.println("[创建]定时任务执行时间：创建");
         } catch (Exception e) {
@@ -38,9 +37,9 @@ public class QuartzController {
     public String update(QuartzJobBean quartzJobBean) {
         try {
             //进行测试所以写死
-            quartzJobBean.setJobClass("com.ml.service.quartz.MyTask1");
+            quartzJobBean.setJobClass("com.ml.service.quartz.timingReadCaseData");
             quartzJobBean.setJobName("test1");
-            quartzJobBean.setCron("0/60 * * * * ? ");
+            quartzJobBean.setCron("0/10 * * * * ? ");
             QuartzUtils.updateScheduleJob(scheduler, quartzJobBean, null);
             System.out.println("[更新]定时任务执行时间：更新");
         } catch (Exception e) {

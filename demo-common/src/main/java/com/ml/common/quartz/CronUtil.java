@@ -1,32 +1,26 @@
 package com.ml.common.quartz;
 
-/**
- * @Classname CronUtil
- * @Description TODO
- * @Date 2019/7/30 17:39
- * @Created by zhangzhenjun
- */
 public class CronUtil {
 
     /**
      *
      *方法摘要：构建Cron表达式
-     *@param  taskScheduleModel
+     *@param  cronExpression 实体类
      *@return String
      */
-    public static String createCronExpression(TaskScheduleModel taskScheduleModel){
-        StringBuffer cronExp = new StringBuffer("");
+    public static String createCronExpression(CronExpression cronExpression){
+        StringBuilder cronExp = new StringBuilder();
 
-        if(null == taskScheduleModel.getJobType()) {
+        if(null == cronExpression.getJobType()) {
             System.out.println("执行周期未配置" );//执行周期未配置
         }
 
-        if (null != taskScheduleModel.getSecond()
-                && null == taskScheduleModel.getMinute()
-                && null == taskScheduleModel.getHour()){
+        if (null != cronExpression.getSecond()
+                && null == cronExpression.getMinute()
+                && null == cronExpression.getHour()){
             //每隔几秒
-            if (taskScheduleModel.getJobType().intValue() == 0) {
-                cronExp.append("0/").append(taskScheduleModel.getSecond());
+            if (cronExpression.getJobType() == 0) {
+                cronExp.append("0/").append(cronExpression.getSecond());
                 cronExp.append(" ");
                 cronExp.append("* ");
                 cronExp.append("* ");
@@ -37,13 +31,13 @@ public class CronUtil {
 
         }
 
-        if (null != taskScheduleModel.getSecond()
-                && null != taskScheduleModel.getMinute()
-                && null == taskScheduleModel.getHour()){
+        if (null != cronExpression.getSecond()
+                && null != cronExpression.getMinute()
+                && null == cronExpression.getHour()){
             //每隔几分钟
-            if (taskScheduleModel.getJobType().intValue() == 4) {
+            if (cronExpression.getJobType() == 4) {
                 cronExp.append("* ");
-                cronExp.append("0/").append(taskScheduleModel.getMinute());
+                cronExp.append("0/").append(cronExpression.getMinute());
                 cronExp.append(" ");
                 cronExp.append("* ");
                 cronExp.append("* ");
@@ -53,31 +47,31 @@ public class CronUtil {
 
         }
 
-        if (null != taskScheduleModel.getSecond()
-                && null != taskScheduleModel.getMinute()
-                && null != taskScheduleModel.getHour()) {
+        if (null != cronExpression.getSecond()
+                && null != cronExpression.getMinute()
+                && null != cronExpression.getHour()) {
             //秒
-            cronExp.append(taskScheduleModel.getSecond()).append(" ");
+            cronExp.append(cronExpression.getSecond()).append(" ");
             //分
-            cronExp.append(taskScheduleModel.getMinute()).append(" ");
+            cronExp.append(cronExpression.getMinute()).append(" ");
             //小时
-            cronExp.append(taskScheduleModel.getHour()).append(" ");
+            cronExp.append(cronExpression.getHour()).append(" ");
 
             //每天
-            if(taskScheduleModel.getJobType().intValue() == 1){
+            if(cronExpression.getJobType() == 1){
                 cronExp.append("* ");//日
                 cronExp.append("* ");//月
                 cronExp.append("?");//周
             }
 
             //按每周
-            else if(taskScheduleModel.getJobType().intValue() == 3){
+            else if(cronExpression.getJobType() == 3){
                 //一个月中第几天
                 cronExp.append("? ");
                 //月份
                 cronExp.append("* ");
                 //周
-                Integer[] weeks = taskScheduleModel.getDayOfWeeks();
+                Integer[] weeks = cronExpression.getDayArr();
                 for(int i = 0; i < weeks.length; i++){
                     if(i == 0){
                         cronExp.append(weeks[i]);
@@ -89,9 +83,9 @@ public class CronUtil {
             }
 
             //按每月
-            else if(taskScheduleModel.getJobType().intValue() == 2){
+            else if(cronExpression.getJobType() == 2){
                 //一个月中的哪几天
-                Integer[] days = taskScheduleModel.getDayOfMonths();
+                Integer[] days = cronExpression.getDayArr();
                 for(int i = 0; i < days.length; i++){
                     if(i == 0){
                         cronExp.append(days[i]);
@@ -115,59 +109,59 @@ public class CronUtil {
     /**
      *
      *方法摘要：生成计划的详细描述
-     *@param  taskScheduleModel
+     *@param  cronExpression 实体类
      *@return String
      */
-    public static String createDescription(TaskScheduleModel taskScheduleModel){
-        StringBuffer description = new StringBuffer("");
+    public static String createDescription(CronExpression cronExpression){
+        StringBuilder description = new StringBuilder();
         //计划执行开始时间
-//      Date startTime = taskScheduleModel.getScheduleStartTime();
+//      Date startTime = cronExpression.getScheduleStartTime();
 
-        if (null != taskScheduleModel.getSecond()
-                && null != taskScheduleModel.getMinute()
-                && null != taskScheduleModel.getHour()) {
+        if (null != cronExpression.getSecond()
+                && null != cronExpression.getMinute()
+                && null != cronExpression.getHour()) {
             //按每天
-            if(taskScheduleModel.getJobType().intValue() == 1){
+            if(cronExpression.getJobType() == 1){
                 description.append("每天");
-                description.append(taskScheduleModel.getHour()).append("时");
-                description.append(taskScheduleModel.getMinute()).append("分");
-                description.append(taskScheduleModel.getSecond()).append("秒");
+                description.append(cronExpression.getHour()).append("时");
+                description.append(cronExpression.getMinute()).append("分");
+                description.append(cronExpression.getSecond()).append("秒");
                 description.append("执行");
             }
 
             //按每周
-            else if(taskScheduleModel.getJobType().intValue() == 3){
-                if(taskScheduleModel.getDayOfWeeks() != null && taskScheduleModel.getDayOfWeeks().length > 0) {
-                    String days = "";
-                    for(int i : taskScheduleModel.getDayOfWeeks()) {
-                        days += "周" + i;
+            else if(cronExpression.getJobType() == 3){
+                if(cronExpression.getDayArr() != null && cronExpression.getDayArr().length > 0) {
+                    StringBuilder days = new StringBuilder();
+                    for(int i : cronExpression.getDayArr()) {
+                        days.append("周").append(i);
                     }
                     description.append("每周的").append(days).append(" ");
                 }
-                if (null != taskScheduleModel.getSecond()
-                        && null != taskScheduleModel.getMinute()
-                        && null != taskScheduleModel.getHour()) {
+                if (null != cronExpression.getSecond()
+                        && null != cronExpression.getMinute()
+                        && null != cronExpression.getHour()) {
                     description.append(",");
-                    description.append(taskScheduleModel.getHour()).append("时");
-                    description.append(taskScheduleModel.getMinute()).append("分");
-                    description.append(taskScheduleModel.getSecond()).append("秒");
+                    description.append(cronExpression.getHour()).append("时");
+                    description.append(cronExpression.getMinute()).append("分");
+                    description.append(cronExpression.getSecond()).append("秒");
                 }
                 description.append("执行");
             }
 
             //按每月
-            else if(taskScheduleModel.getJobType().intValue() == 2){
+            else if(cronExpression.getJobType() == 2){
                 //选择月份
-                if(taskScheduleModel.getDayOfMonths() != null && taskScheduleModel.getDayOfMonths().length > 0) {
-                    String days = "";
-                    for(int i : taskScheduleModel.getDayOfMonths()) {
-                        days += i + "号";
+                if(cronExpression.getDayArr() != null && cronExpression.getDayArr().length > 0) {
+                    StringBuilder days = new StringBuilder();
+                    for(int i : cronExpression.getDayArr()) {
+                        days.append(i).append("号");
                     }
                     description.append("每月的").append(days).append(" ");
                 }
-                description.append(taskScheduleModel.getHour()).append("时");
-                description.append(taskScheduleModel.getMinute()).append("分");
-                description.append(taskScheduleModel.getSecond()).append("秒");
+                description.append(cronExpression.getHour()).append("时");
+                description.append(cronExpression.getMinute()).append("分");
+                description.append(cronExpression.getSecond()).append("秒");
                 description.append("执行");
             }else{
                 return  "没有参数";
@@ -180,46 +174,46 @@ public class CronUtil {
     //参考例子
     public static void main(String[] args) {
         //执行时间：每天的12时12分12秒 start
-        TaskScheduleModel taskScheduleModel = new TaskScheduleModel();
+        CronExpression cronExpression = new CronExpression();
 
-        taskScheduleModel.setJobType(0);//按每秒
-        taskScheduleModel.setSecond(30);
-        String cropExp = createCronExpression(taskScheduleModel);
-        System.out.println(cropExp + ":" + createDescription(taskScheduleModel));
+        cronExpression.setJobType(0);//按每秒
+        cronExpression.setSecond(30);
+        String cropExp = createCronExpression(cronExpression);
+        System.out.println(cropExp + ":" + createDescription(cronExpression));
 
-        taskScheduleModel.setJobType(4);//按每分钟
-        taskScheduleModel.setMinute(8);
-        cropExp = createCronExpression(taskScheduleModel);
-        System.out.println(cropExp + ":" + createDescription(taskScheduleModel));
+        cronExpression.setJobType(4);//按每分钟
+        cronExpression.setMinute(8);
+        cropExp = createCronExpression(cronExpression);
+        System.out.println(cropExp + ":" + createDescription(cronExpression));
 
-        taskScheduleModel.setJobType(1);//按每天
+        cronExpression.setJobType(1);//按每天
         Integer hour = 12; //时
         Integer minute = 12; //分
         Integer second = 12; //秒
-        taskScheduleModel.setHour(hour);
-        taskScheduleModel.setMinute(minute);
-        taskScheduleModel.setSecond(second);
-        cropExp = createCronExpression(taskScheduleModel);
-        System.out.println(cropExp + ":" + createDescription(taskScheduleModel));
+        cronExpression.setHour(hour);
+        cronExpression.setMinute(minute);
+        cronExpression.setSecond(second);
+        cropExp = createCronExpression(cronExpression);
+        System.out.println(cropExp + ":" + createDescription(cronExpression));
         //执行时间：每天的12时12分12秒 end
 
-        taskScheduleModel.setJobType(3);//每周的哪几天执行
+        cronExpression.setJobType(3);//每周的哪几天执行
         Integer[] dayOfWeeks = new Integer[3];
         dayOfWeeks[0] = 1;
         dayOfWeeks[1] = 2;
         dayOfWeeks[2] = 3;
-        taskScheduleModel.setDayOfWeeks(dayOfWeeks);
-        cropExp = createCronExpression(taskScheduleModel);
-        System.out.println(cropExp + ":" + createDescription(taskScheduleModel));
+        cronExpression.setDayArr(dayOfWeeks);
+        cropExp = createCronExpression(cronExpression);
+        System.out.println(cropExp + ":" + createDescription(cronExpression));
 
-        taskScheduleModel.setJobType(2);//每月的哪几天执行
+        cronExpression.setJobType(2);//每月的哪几天执行
         Integer[] dayOfMonths = new Integer[3];
         dayOfMonths[0] = 1;
         dayOfMonths[1] = 21;
         dayOfMonths[2] = 13;
-        taskScheduleModel.setDayOfMonths(dayOfMonths);
-        cropExp = createCronExpression(taskScheduleModel);
-        System.out.println(cropExp + ":" + createDescription(taskScheduleModel));
+        cronExpression.setDayArr(dayOfMonths);
+        cropExp = createCronExpression(cronExpression);
+        System.out.println(cropExp + ":" + createDescription(cronExpression));
 
     }
 
