@@ -16,6 +16,6 @@ public class CaseDataServiceImpl implements CaseDataService {
 
     /** 根据状态查询全部数据 */
     public List<LawCasePendingRecord> findAll(String state){
-        return lawCasePendingRecordMapper.findAll(state);
+        return lawCasePendingRecordMapper.findAll();
     }
 }

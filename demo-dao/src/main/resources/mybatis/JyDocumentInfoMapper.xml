@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyDocumentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyDocumentInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+    <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="PATH" jdbcType="VARCHAR" property="path" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="WORD_TYPE" jdbcType="CHAR" property="wordType" />
+    <result column="MAIL_LOGIN_NAME" jdbcType="VARCHAR" property="mailLoginName" />
+    <result column="PERSON_TYPE" jdbcType="CHAR" property="personType" />
+    <result column="DEL_FLAG" jdbcType="CHAR" property="delFlag" />
+    <result column="PERSON_NAME" jdbcType="VARCHAR" property="personName" />
+    <result column="IS_PICTURE" jdbcType="BIT" property="isPicture" />
+    <result column="APPRAISAL_NO" jdbcType="VARCHAR" property="appraisalNo" />
+    <result column="APPLYER_ID" jdbcType="INTEGER" property="applyerId" />
+    <result column="FOLDER_TYPE" jdbcType="VARCHAR" property="folderType" />
+    <result column="FOLDER_INDEX" jdbcType="VARCHAR" property="folderIndex" />
+    <result column="REMOTE_SIGN" jdbcType="VARCHAR" property="remoteSign" />
+    <result column="INSURANCE_POLICYKEY" jdbcType="VARCHAR" property="insurancePolicykey" />
+    <result column="SOURCE" jdbcType="VARCHAR" property="source" />
+    <result column="JY_ADJUST_INFO_ID" jdbcType="INTEGER" property="jyAdjustInfoId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ml.po.JyDocumentInfo">
+    <result column="TEMPLATE_CONTENT" jdbcType="LONGVARCHAR" property="templateContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, NAME, SERIAL_NO, USER_ID, TYPE, PATH, CREATE_DATE, WORD_TYPE, MAIL_LOGIN_NAME, 
+    PERSON_TYPE, DEL_FLAG, PERSON_NAME, IS_PICTURE, APPRAISAL_NO, APPLYER_ID, FOLDER_TYPE, 
+    FOLDER_INDEX, REMOTE_SIGN, INSURANCE_POLICYKEY, SOURCE, JY_ADJUST_INFO_ID
+  </sql>
+  <sql id="Blob_Column_List">
+    TEMPLATE_CONTENT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jy_document_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_document_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyDocumentInfo">
+    insert into jy_document_info (ID, NAME, SERIAL_NO, 
+      USER_ID, TYPE, PATH, 
+      CREATE_DATE, WORD_TYPE, MAIL_LOGIN_NAME, 
+      PERSON_TYPE, DEL_FLAG, PERSON_NAME, 
+      IS_PICTURE, APPRAISAL_NO, APPLYER_ID, 
+      FOLDER_TYPE, FOLDER_INDEX, REMOTE_SIGN, 
+      INSURANCE_POLICYKEY, SOURCE, JY_ADJUST_INFO_ID, 
+      TEMPLATE_CONTENT)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{wordType,jdbcType=CHAR}, #{mailLoginName,jdbcType=VARCHAR}, 
+      #{personType,jdbcType=CHAR}, #{delFlag,jdbcType=CHAR}, #{personName,jdbcType=VARCHAR}, 
+      #{isPicture,jdbcType=BIT}, #{appraisalNo,jdbcType=VARCHAR}, #{applyerId,jdbcType=INTEGER}, 
+      #{folderType,jdbcType=VARCHAR}, #{folderIndex,jdbcType=VARCHAR}, #{remoteSign,jdbcType=VARCHAR}, 
+      #{insurancePolicykey,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{jyAdjustInfoId,jdbcType=INTEGER}, 
+      #{templateContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyDocumentInfo">
+    insert into jy_document_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="path != null">
+        PATH,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="wordType != null">
+        WORD_TYPE,
+      </if>
+      <if test="mailLoginName != null">
+        MAIL_LOGIN_NAME,
+      </if>
+      <if test="personType != null">
+        PERSON_TYPE,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="personName != null">
+        PERSON_NAME,
+      </if>
+      <if test="isPicture != null">
+        IS_PICTURE,
+      </if>
+      <if test="appraisalNo != null">
+        APPRAISAL_NO,
+      </if>
+      <if test="applyerId != null">
+        APPLYER_ID,
+      </if>
+      <if test="folderType != null">
+        FOLDER_TYPE,
+      </if>
+      <if test="folderIndex != null">
+        FOLDER_INDEX,
+      </if>
+      <if test="remoteSign != null">
+        REMOTE_SIGN,
+      </if>
+      <if test="insurancePolicykey != null">
+        INSURANCE_POLICYKEY,
+      </if>
+      <if test="source != null">
+        SOURCE,
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID,
+      </if>
+      <if test="templateContent != null">
+        TEMPLATE_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wordType != null">
+        #{wordType,jdbcType=CHAR},
+      </if>
+      <if test="mailLoginName != null">
+        #{mailLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="isPicture != null">
+        #{isPicture,jdbcType=BIT},
+      </if>
+      <if test="appraisalNo != null">
+        #{appraisalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyerId != null">
+        #{applyerId,jdbcType=INTEGER},
+      </if>
+      <if test="folderType != null">
+        #{folderType,jdbcType=VARCHAR},
+      </if>
+      <if test="folderIndex != null">
+        #{folderIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteSign != null">
+        #{remoteSign,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancePolicykey != null">
+        #{insurancePolicykey,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="templateContent != null">
+        #{templateContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyDocumentInfo">
+    update jy_document_info
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        USER_ID = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null">
+        PATH = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wordType != null">
+        WORD_TYPE = #{wordType,jdbcType=CHAR},
+      </if>
+      <if test="mailLoginName != null">
+        MAIL_LOGIN_NAME = #{mailLoginName,jdbcType=VARCHAR},
+      </if>
+      <if test="personType != null">
+        PERSON_TYPE = #{personType,jdbcType=CHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="isPicture != null">
+        IS_PICTURE = #{isPicture,jdbcType=BIT},
+      </if>
+      <if test="appraisalNo != null">
+        APPRAISAL_NO = #{appraisalNo,jdbcType=VARCHAR},
+      </if>
+      <if test="applyerId != null">
+        APPLYER_ID = #{applyerId,jdbcType=INTEGER},
+      </if>
+      <if test="folderType != null">
+        FOLDER_TYPE = #{folderType,jdbcType=VARCHAR},
+      </if>
+      <if test="folderIndex != null">
+        FOLDER_INDEX = #{folderIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="remoteSign != null">
+        REMOTE_SIGN = #{remoteSign,jdbcType=VARCHAR},
+      </if>
+      <if test="insurancePolicykey != null">
+        INSURANCE_POLICYKEY = #{insurancePolicykey,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        SOURCE = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="templateContent != null">
+        TEMPLATE_CONTENT = #{templateContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ml.po.JyDocumentInfo">
+    update jy_document_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=INTEGER},
+      TYPE = #{type,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      WORD_TYPE = #{wordType,jdbcType=CHAR},
+      MAIL_LOGIN_NAME = #{mailLoginName,jdbcType=VARCHAR},
+      PERSON_TYPE = #{personType,jdbcType=CHAR},
+      DEL_FLAG = #{delFlag,jdbcType=CHAR},
+      PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      IS_PICTURE = #{isPicture,jdbcType=BIT},
+      APPRAISAL_NO = #{appraisalNo,jdbcType=VARCHAR},
+      APPLYER_ID = #{applyerId,jdbcType=INTEGER},
+      FOLDER_TYPE = #{folderType,jdbcType=VARCHAR},
+      FOLDER_INDEX = #{folderIndex,jdbcType=VARCHAR},
+      REMOTE_SIGN = #{remoteSign,jdbcType=VARCHAR},
+      INSURANCE_POLICYKEY = #{insurancePolicykey,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      TEMPLATE_CONTENT = #{templateContent,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyDocumentInfo">
+    update jy_document_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      USER_ID = #{userId,jdbcType=INTEGER},
+      TYPE = #{type,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      WORD_TYPE = #{wordType,jdbcType=CHAR},
+      MAIL_LOGIN_NAME = #{mailLoginName,jdbcType=VARCHAR},
+      PERSON_TYPE = #{personType,jdbcType=CHAR},
+      DEL_FLAG = #{delFlag,jdbcType=CHAR},
+      PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      IS_PICTURE = #{isPicture,jdbcType=BIT},
+      APPRAISAL_NO = #{appraisalNo,jdbcType=VARCHAR},
+      APPLYER_ID = #{applyerId,jdbcType=INTEGER},
+      FOLDER_TYPE = #{folderType,jdbcType=VARCHAR},
+      FOLDER_INDEX = #{folderIndex,jdbcType=VARCHAR},
+      REMOTE_SIGN = #{remoteSign,jdbcType=VARCHAR},
+      INSURANCE_POLICYKEY = #{insurancePolicykey,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=VARCHAR},
+      JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

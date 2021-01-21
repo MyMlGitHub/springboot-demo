@@ -6,6 +6,7 @@ import com.ml.service.SysUserService;
 import com.ml.vo.SysUserVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -53,7 +54,7 @@ public class LoginController {
         SysUser user = sysUserService.findMasterSysUserByName(userVO);
 //        user.getCreateDate();
         if(Objects.isNull(user)){
-            throw new RuntimeException("异常信息!");
+            throw new RuntimeException("自定义打印异常信息!");
         }
         return user;
     }

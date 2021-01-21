@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyLawApplyerInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyLawApplyerInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="PERSON_TYPE" jdbcType="CHAR" property="personType" />
+    <result column="ID_TYPE" jdbcType="CHAR" property="idType" />
+    <result column="PERSON_NAME" jdbcType="VARCHAR" property="personName" />
+    <result column="CERTIFICATES_TYPE" jdbcType="CHAR" property="certificatesType" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="NATION" jdbcType="VARCHAR" property="nation" />
+    <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="DOMICILE" jdbcType="VARCHAR" property="domicile" />
+    <result column="RESIDENCE" jdbcType="VARCHAR" property="residence" />
+    <result column="SEND_ADDRESS" jdbcType="VARCHAR" property="sendAddress" />
+    <result column="IS_LIVE" jdbcType="BIT" property="isLive" />
+    <result column="ID_FACE_PICTURE" jdbcType="VARCHAR" property="idFacePicture" />
+    <result column="ID_BACK_PICTURE" jdbcType="VARCHAR" property="idBackPicture" />
+    <result column="PLATE_NO" jdbcType="VARCHAR" property="plateNo" />
+    <result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName" />
+    <result column="LOSS_NO" jdbcType="VARCHAR" property="lossNo" />
+    <result column="DEL_FLAG" jdbcType="INTEGER" property="delFlag" />
+    <result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+    <result column="LEGAL_TYPE" jdbcType="CHAR" property="legalType" />
+    <result column="LEGAL_NAME" jdbcType="VARCHAR" property="legalName" />
+    <result column="JOB" jdbcType="VARCHAR" property="job" />
+    <result column="ORG_CODE" jdbcType="VARCHAR" property="orgCode" />
+    <result column="REGISTER_CODE" jdbcType="VARCHAR" property="registerCode" />
+    <result column="ENTERPRISE_TYPE" jdbcType="CHAR" property="enterpriseType" />
+    <result column="BUSINESS_LICENSE_PICTURE" jdbcType="VARCHAR" property="businessLicensePicture" />
+    <result column="LEGAL_PERSON_PICTURE" jdbcType="VARCHAR" property="legalPersonPicture" />
+    <result column="JY_LAW_INFO_ID" jdbcType="INTEGER" property="jyLawInfoId" />
+    <result column="RESPONSIBLE_RATE" jdbcType="DOUBLE" property="responsibleRate" />
+    <result column="IS_VEHICLE" jdbcType="CHAR" property="isVehicle" />
+    <result column="RISK_TYPES" jdbcType="VARCHAR" property="riskTypes" />
+    <result column="THIRD_PARTY" jdbcType="DOUBLE" property="thirdParty" />
+    <result column="THIRD_PARTY_FRANCHISE" jdbcType="DOUBLE" property="thirdPartyFranchise" />
+    <result column="THIRD_PARTY_RATE" jdbcType="DOUBLE" property="thirdPartyRate" />
+    <result column="COMPENSATE_TOTAL" jdbcType="DOUBLE" property="compensateTotal" />
+    <result column="TCI_TOTAL" jdbcType="DOUBLE" property="tciTotal" />
+    <result column="VCI_TOTAL" jdbcType="DOUBLE" property="vciTotal" />
+    <result column="INSURANCE_FORCE_COMPANY" jdbcType="VARCHAR" property="insuranceForceCompany" />
+    <result column="INSURANCE_BUSINESS_COMPANY" jdbcType="VARCHAR" property="insuranceBusinessCompany" />
+    <result column="BIRTH_DAY" jdbcType="TIMESTAMP" property="birthDay" />
+    <result column="PAY_MONEY" jdbcType="DOUBLE" property="payMoney" />
+    <result column="ABS_DEDUCTIBLE" jdbcType="DOUBLE" property="absDeductible" />
+    <result column="IS_EMAIL" jdbcType="CHAR" property="isEmail" />
+    <result column="ABS_DEDUCTIBLE_STR" jdbcType="VARCHAR" property="absDeductibleStr" />
+    <result column="IS_DEATH" jdbcType="VARCHAR" property="isDeath" />
+    <result column="COMPANY_CODE" jdbcType="VARCHAR" property="companyCode" />
+    <result column="SUFFER_NATURE" jdbcType="VARCHAR" property="sufferNature" />
+    <result column="RESPONSIBILITY" jdbcType="VARCHAR" property="responsibility" />
+    <result column="INSURANCE_BUSINESS_COMPANY_CODE" jdbcType="VARCHAR" property="insuranceBusinessCompanyCode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, PERSON_TYPE, ID_TYPE, PERSON_NAME, CERTIFICATES_TYPE, ID_NO, SEX, NATION, TELEPHONE, 
+    EMAIL, DOMICILE, RESIDENCE, SEND_ADDRESS, IS_LIVE, ID_FACE_PICTURE, ID_BACK_PICTURE, 
+    PLATE_NO, COMPANY_NAME, LOSS_NO, DEL_FLAG, ORG_NAME, LEGAL_TYPE, LEGAL_NAME, JOB, 
+    ORG_CODE, REGISTER_CODE, ENTERPRISE_TYPE, BUSINESS_LICENSE_PICTURE, LEGAL_PERSON_PICTURE, 
+    JY_LAW_INFO_ID, RESPONSIBLE_RATE, IS_VEHICLE, RISK_TYPES, THIRD_PARTY, THIRD_PARTY_FRANCHISE, 
+    THIRD_PARTY_RATE, COMPENSATE_TOTAL, TCI_TOTAL, VCI_TOTAL, INSURANCE_FORCE_COMPANY, 
+    INSURANCE_BUSINESS_COMPANY, BIRTH_DAY, PAY_MONEY, ABS_DEDUCTIBLE, IS_EMAIL, ABS_DEDUCTIBLE_STR, 
+    IS_DEATH, COMPANY_CODE, SUFFER_NATURE, RESPONSIBILITY, INSURANCE_BUSINESS_COMPANY_CODE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jy_law_applyer_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_law_applyer_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyLawApplyerInfo">
+    insert into jy_law_applyer_info (ID, PERSON_TYPE, ID_TYPE, 
+      PERSON_NAME, CERTIFICATES_TYPE, ID_NO, 
+      SEX, NATION, TELEPHONE, 
+      EMAIL, DOMICILE, RESIDENCE, 
+      SEND_ADDRESS, IS_LIVE, ID_FACE_PICTURE, 
+      ID_BACK_PICTURE, PLATE_NO, COMPANY_NAME, 
+      LOSS_NO, DEL_FLAG, ORG_NAME, 
+      LEGAL_TYPE, LEGAL_NAME, JOB, 
+      ORG_CODE, REGISTER_CODE, ENTERPRISE_TYPE, 
+      BUSINESS_LICENSE_PICTURE, LEGAL_PERSON_PICTURE, 
+      JY_LAW_INFO_ID, RESPONSIBLE_RATE, IS_VEHICLE, 
+      RISK_TYPES, THIRD_PARTY, THIRD_PARTY_FRANCHISE, 
+      THIRD_PARTY_RATE, COMPENSATE_TOTAL, TCI_TOTAL, 
+      VCI_TOTAL, INSURANCE_FORCE_COMPANY, INSURANCE_BUSINESS_COMPANY, 
+      BIRTH_DAY, PAY_MONEY, ABS_DEDUCTIBLE, 
+      IS_EMAIL, ABS_DEDUCTIBLE_STR, IS_DEATH, 
+      COMPANY_CODE, SUFFER_NATURE, RESPONSIBILITY, 
+      INSURANCE_BUSINESS_COMPANY_CODE)
+    values (#{id,jdbcType=INTEGER}, #{personType,jdbcType=CHAR}, #{idType,jdbcType=CHAR}, 
+      #{personName,jdbcType=VARCHAR}, #{certificatesType,jdbcType=CHAR}, #{idNo,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{nation,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{domicile,jdbcType=VARCHAR}, #{residence,jdbcType=VARCHAR}, 
+      #{sendAddress,jdbcType=VARCHAR}, #{isLive,jdbcType=BIT}, #{idFacePicture,jdbcType=VARCHAR}, 
+      #{idBackPicture,jdbcType=VARCHAR}, #{plateNo,jdbcType=VARCHAR}, #{companyName,jdbcType=VARCHAR}, 
+      #{lossNo,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, 
+      #{legalType,jdbcType=CHAR}, #{legalName,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{orgCode,jdbcType=VARCHAR}, #{registerCode,jdbcType=VARCHAR}, #{enterpriseType,jdbcType=CHAR}, 
+      #{businessLicensePicture,jdbcType=VARCHAR}, #{legalPersonPicture,jdbcType=VARCHAR}, 
+      #{jyLawInfoId,jdbcType=INTEGER}, #{responsibleRate,jdbcType=DOUBLE}, #{isVehicle,jdbcType=CHAR}, 
+      #{riskTypes,jdbcType=VARCHAR}, #{thirdParty,jdbcType=DOUBLE}, #{thirdPartyFranchise,jdbcType=DOUBLE}, 
+      #{thirdPartyRate,jdbcType=DOUBLE}, #{compensateTotal,jdbcType=DOUBLE}, #{tciTotal,jdbcType=DOUBLE}, 
+      #{vciTotal,jdbcType=DOUBLE}, #{insuranceForceCompany,jdbcType=VARCHAR}, #{insuranceBusinessCompany,jdbcType=VARCHAR}, 
+      #{birthDay,jdbcType=TIMESTAMP}, #{payMoney,jdbcType=DOUBLE}, #{absDeductible,jdbcType=DOUBLE}, 
+      #{isEmail,jdbcType=CHAR}, #{absDeductibleStr,jdbcType=VARCHAR}, #{isDeath,jdbcType=VARCHAR}, 
+      #{companyCode,jdbcType=VARCHAR}, #{sufferNature,jdbcType=VARCHAR}, #{responsibility,jdbcType=VARCHAR}, 
+      #{insuranceBusinessCompanyCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyLawApplyerInfo">
+    insert into jy_law_applyer_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="personType != null">
+        PERSON_TYPE,
+      </if>
+      <if test="idType != null">
+        ID_TYPE,
+      </if>
+      <if test="personName != null">
+        PERSON_NAME,
+      </if>
+      <if test="certificatesType != null">
+        CERTIFICATES_TYPE,
+      </if>
+      <if test="idNo != null">
+        ID_NO,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="nation != null">
+        NATION,
+      </if>
+      <if test="telephone != null">
+        TELEPHONE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="domicile != null">
+        DOMICILE,
+      </if>
+      <if test="residence != null">
+        RESIDENCE,
+      </if>
+      <if test="sendAddress != null">
+        SEND_ADDRESS,
+      </if>
+      <if test="isLive != null">
+        IS_LIVE,
+      </if>
+      <if test="idFacePicture != null">
+        ID_FACE_PICTURE,
+      </if>
+      <if test="idBackPicture != null">
+        ID_BACK_PICTURE,
+      </if>
+      <if test="plateNo != null">
+        PLATE_NO,
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME,
+      </if>
+      <if test="lossNo != null">
+        LOSS_NO,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="orgName != null">
+        ORG_NAME,
+      </if>
+      <if test="legalType != null">
+        LEGAL_TYPE,
+      </if>
+      <if test="legalName != null">
+        LEGAL_NAME,
+      </if>
+      <if test="job != null">
+        JOB,
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE,
+      </if>
+      <if test="registerCode != null">
+        REGISTER_CODE,
+      </if>
+      <if test="enterpriseType != null">
+        ENTERPRISE_TYPE,
+      </if>
+      <if test="businessLicensePicture != null">
+        BUSINESS_LICENSE_PICTURE,
+      </if>
+      <if test="legalPersonPicture != null">
+        LEGAL_PERSON_PICTURE,
+      </if>
+      <if test="jyLawInfoId != null">
+        JY_LAW_INFO_ID,
+      </if>
+      <if test="responsibleRate != null">
+        RESPONSIBLE_RATE,
+      </if>
+      <if test="isVehicle != null">
+        IS_VEHICLE,
+      </if>
+      <if test="riskTypes != null">
+        RISK_TYPES,
+      </if>
+      <if test="thirdParty != null">
+        THIRD_PARTY,
+      </if>
+      <if test="thirdPartyFranchise != null">
+        THIRD_PARTY_FRANCHISE,
+      </if>
+      <if test="thirdPartyRate != null">
+        THIRD_PARTY_RATE,
+      </if>
+      <if test="compensateTotal != null">
+        COMPENSATE_TOTAL,
+      </if>
+      <if test="tciTotal != null">
+        TCI_TOTAL,
+      </if>
+      <if test="vciTotal != null">
+        VCI_TOTAL,
+      </if>
+      <if test="insuranceForceCompany != null">
+        INSURANCE_FORCE_COMPANY,
+      </if>
+      <if test="insuranceBusinessCompany != null">
+        INSURANCE_BUSINESS_COMPANY,
+      </if>
+      <if test="birthDay != null">
+        BIRTH_DAY,
+      </if>
+      <if test="payMoney != null">
+        PAY_MONEY,
+      </if>
+      <if test="absDeductible != null">
+        ABS_DEDUCTIBLE,
+      </if>
+      <if test="isEmail != null">
+        IS_EMAIL,
+      </if>
+      <if test="absDeductibleStr != null">
+        ABS_DEDUCTIBLE_STR,
+      </if>
+      <if test="isDeath != null">
+        IS_DEATH,
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE,
+      </if>
+      <if test="sufferNature != null">
+        SUFFER_NATURE,
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY,
+      </if>
+      <if test="insuranceBusinessCompanyCode != null">
+        INSURANCE_BUSINESS_COMPANY_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=CHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatesType != null">
+        #{certificatesType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="sendAddress != null">
+        #{sendAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isLive != null">
+        #{isLive,jdbcType=BIT},
+      </if>
+      <if test="idFacePicture != null">
+        #{idFacePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="idBackPicture != null">
+        #{idBackPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNo != null">
+        #{plateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lossNo != null">
+        #{lossNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalType != null">
+        #{legalType,jdbcType=CHAR},
+      </if>
+      <if test="legalName != null">
+        #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCode != null">
+        #{registerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseType != null">
+        #{enterpriseType,jdbcType=CHAR},
+      </if>
+      <if test="businessLicensePicture != null">
+        #{businessLicensePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonPicture != null">
+        #{legalPersonPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="jyLawInfoId != null">
+        #{jyLawInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="responsibleRate != null">
+        #{responsibleRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isVehicle != null">
+        #{isVehicle,jdbcType=CHAR},
+      </if>
+      <if test="riskTypes != null">
+        #{riskTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdParty != null">
+        #{thirdParty,jdbcType=DOUBLE},
+      </if>
+      <if test="thirdPartyFranchise != null">
+        #{thirdPartyFranchise,jdbcType=DOUBLE},
+      </if>
+      <if test="thirdPartyRate != null">
+        #{thirdPartyRate,jdbcType=DOUBLE},
+      </if>
+      <if test="compensateTotal != null">
+        #{compensateTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="tciTotal != null">
+        #{tciTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="vciTotal != null">
+        #{vciTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="insuranceForceCompany != null">
+        #{insuranceForceCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceBusinessCompany != null">
+        #{insuranceBusinessCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null">
+        #{birthDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="absDeductible != null">
+        #{absDeductible,jdbcType=DOUBLE},
+      </if>
+      <if test="isEmail != null">
+        #{isEmail,jdbcType=CHAR},
+      </if>
+      <if test="absDeductibleStr != null">
+        #{absDeductibleStr,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeath != null">
+        #{isDeath,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sufferNature != null">
+        #{sufferNature,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceBusinessCompanyCode != null">
+        #{insuranceBusinessCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyLawApplyerInfo">
+    update jy_law_applyer_info
+    <set>
+      <if test="personType != null">
+        PERSON_TYPE = #{personType,jdbcType=CHAR},
+      </if>
+      <if test="idType != null">
+        ID_TYPE = #{idType,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatesType != null">
+        CERTIFICATES_TYPE = #{certificatesType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="nation != null">
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="domicile != null">
+        DOMICILE = #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        RESIDENCE = #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="sendAddress != null">
+        SEND_ADDRESS = #{sendAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="isLive != null">
+        IS_LIVE = #{isLive,jdbcType=BIT},
+      </if>
+      <if test="idFacePicture != null">
+        ID_FACE_PICTURE = #{idFacePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="idBackPicture != null">
+        ID_BACK_PICTURE = #{idBackPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="plateNo != null">
+        PLATE_NO = #{plateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="lossNo != null">
+        LOSS_NO = #{lossNo,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null">
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalType != null">
+        LEGAL_TYPE = #{legalType,jdbcType=CHAR},
+      </if>
+      <if test="legalName != null">
+        LEGAL_NAME = #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        JOB = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="registerCode != null">
+        REGISTER_CODE = #{registerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseType != null">
+        ENTERPRISE_TYPE = #{enterpriseType,jdbcType=CHAR},
+      </if>
+      <if test="businessLicensePicture != null">
+        BUSINESS_LICENSE_PICTURE = #{businessLicensePicture,jdbcType=VARCHAR},
+      </if>
+      <if test="legalPersonPicture != null">
+        LEGAL_PERSON_PICTURE = #{legalPersonPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="jyLawInfoId != null">
+        JY_LAW_INFO_ID = #{jyLawInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="responsibleRate != null">
+        RESPONSIBLE_RATE = #{responsibleRate,jdbcType=DOUBLE},
+      </if>
+      <if test="isVehicle != null">
+        IS_VEHICLE = #{isVehicle,jdbcType=CHAR},
+      </if>
+      <if test="riskTypes != null">
+        RISK_TYPES = #{riskTypes,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdParty != null">
+        THIRD_PARTY = #{thirdParty,jdbcType=DOUBLE},
+      </if>
+      <if test="thirdPartyFranchise != null">
+        THIRD_PARTY_FRANCHISE = #{thirdPartyFranchise,jdbcType=DOUBLE},
+      </if>
+      <if test="thirdPartyRate != null">
+        THIRD_PARTY_RATE = #{thirdPartyRate,jdbcType=DOUBLE},
+      </if>
+      <if test="compensateTotal != null">
+        COMPENSATE_TOTAL = #{compensateTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="tciTotal != null">
+        TCI_TOTAL = #{tciTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="vciTotal != null">
+        VCI_TOTAL = #{vciTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="insuranceForceCompany != null">
+        INSURANCE_FORCE_COMPANY = #{insuranceForceCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceBusinessCompany != null">
+        INSURANCE_BUSINESS_COMPANY = #{insuranceBusinessCompany,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null">
+        BIRTH_DAY = #{birthDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payMoney != null">
+        PAY_MONEY = #{payMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="absDeductible != null">
+        ABS_DEDUCTIBLE = #{absDeductible,jdbcType=DOUBLE},
+      </if>
+      <if test="isEmail != null">
+        IS_EMAIL = #{isEmail,jdbcType=CHAR},
+      </if>
+      <if test="absDeductibleStr != null">
+        ABS_DEDUCTIBLE_STR = #{absDeductibleStr,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeath != null">
+        IS_DEATH = #{isDeath,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCode != null">
+        COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      </if>
+      <if test="sufferNature != null">
+        SUFFER_NATURE = #{sufferNature,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceBusinessCompanyCode != null">
+        INSURANCE_BUSINESS_COMPANY_CODE = #{insuranceBusinessCompanyCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyLawApplyerInfo">
+    update jy_law_applyer_info
+    set PERSON_TYPE = #{personType,jdbcType=CHAR},
+      ID_TYPE = #{idType,jdbcType=CHAR},
+      PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      CERTIFICATES_TYPE = #{certificatesType,jdbcType=CHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=CHAR},
+      NATION = #{nation,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      DOMICILE = #{domicile,jdbcType=VARCHAR},
+      RESIDENCE = #{residence,jdbcType=VARCHAR},
+      SEND_ADDRESS = #{sendAddress,jdbcType=VARCHAR},
+      IS_LIVE = #{isLive,jdbcType=BIT},
+      ID_FACE_PICTURE = #{idFacePicture,jdbcType=VARCHAR},
+      ID_BACK_PICTURE = #{idBackPicture,jdbcType=VARCHAR},
+      PLATE_NO = #{plateNo,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      LOSS_NO = #{lossNo,jdbcType=VARCHAR},
+      DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      LEGAL_TYPE = #{legalType,jdbcType=CHAR},
+      LEGAL_NAME = #{legalName,jdbcType=VARCHAR},
+      JOB = #{job,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      REGISTER_CODE = #{registerCode,jdbcType=VARCHAR},
+      ENTERPRISE_TYPE = #{enterpriseType,jdbcType=CHAR},
+      BUSINESS_LICENSE_PICTURE = #{businessLicensePicture,jdbcType=VARCHAR},
+      LEGAL_PERSON_PICTURE = #{legalPersonPicture,jdbcType=VARCHAR},
+      JY_LAW_INFO_ID = #{jyLawInfoId,jdbcType=INTEGER},
+      RESPONSIBLE_RATE = #{responsibleRate,jdbcType=DOUBLE},
+      IS_VEHICLE = #{isVehicle,jdbcType=CHAR},
+      RISK_TYPES = #{riskTypes,jdbcType=VARCHAR},
+      THIRD_PARTY = #{thirdParty,jdbcType=DOUBLE},
+      THIRD_PARTY_FRANCHISE = #{thirdPartyFranchise,jdbcType=DOUBLE},
+      THIRD_PARTY_RATE = #{thirdPartyRate,jdbcType=DOUBLE},
+      COMPENSATE_TOTAL = #{compensateTotal,jdbcType=DOUBLE},
+      TCI_TOTAL = #{tciTotal,jdbcType=DOUBLE},
+      VCI_TOTAL = #{vciTotal,jdbcType=DOUBLE},
+      INSURANCE_FORCE_COMPANY = #{insuranceForceCompany,jdbcType=VARCHAR},
+      INSURANCE_BUSINESS_COMPANY = #{insuranceBusinessCompany,jdbcType=VARCHAR},
+      BIRTH_DAY = #{birthDay,jdbcType=TIMESTAMP},
+      PAY_MONEY = #{payMoney,jdbcType=DOUBLE},
+      ABS_DEDUCTIBLE = #{absDeductible,jdbcType=DOUBLE},
+      IS_EMAIL = #{isEmail,jdbcType=CHAR},
+      ABS_DEDUCTIBLE_STR = #{absDeductibleStr,jdbcType=VARCHAR},
+      IS_DEATH = #{isDeath,jdbcType=VARCHAR},
+      COMPANY_CODE = #{companyCode,jdbcType=VARCHAR},
+      SUFFER_NATURE = #{sufferNature,jdbcType=VARCHAR},
+      RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      INSURANCE_BUSINESS_COMPANY_CODE = #{insuranceBusinessCompanyCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

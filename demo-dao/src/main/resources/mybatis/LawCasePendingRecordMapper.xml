@@ -67,6 +67,6 @@
         select
             <include refid="Base_Column_List" />
         from law_case_pending_record
-        where STSTE = #{state,jdbcType=VARCHAR}
+        where STSTE in ('0','2')
     </select>
 </mapper>

@@ -1,11 +1,15 @@
 package com.ml.common.quartz;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.quartz.*;
 
 import java.util.Map;
 import java.util.Objects;
 
 public class QuartzUtils {
+
+    private static final Logger logger = LogManager.getLogger(QuartzUtils.class);
 
     /**
      * 创建定时任务 定时任务创建之后默认启动状态
@@ -36,9 +40,10 @@ public class QuartzUtils {
                 scheduler.start();
             }
         } catch (ClassNotFoundException e) {
-            System.out.println("定时任务类路径出错：请输入类的绝对路径");
+            logger.error("定时任务类路径出错：请输入类的绝对路径");
         } catch (SchedulerException e) {
-            System.out.println("创建定时任务出错："+e.getMessage());
+            logger.error("创建定时任务出错：");
+            e.printStackTrace();
         }
     }
 
@@ -66,7 +71,8 @@ public class QuartzUtils {
             //重置对应的job
             scheduler.rescheduleJob(triggerKey, trigger);
         } catch (SchedulerException e) {
-            System.out.println("更新定时任务出错："+e.getMessage());
+            logger.error("更新定时任务出错：");
+            e.printStackTrace();
         }
     }
 
@@ -80,7 +86,8 @@ public class QuartzUtils {
             JobKey jobKey = JobKey.jobKey(jobName);
             scheduler.pauseJob(jobKey);
         } catch (SchedulerException e) {
-            System.out.println("暂停定时任务出错："+e.getMessage());
+            logger.error("暂停定时任务出错：");
+            e.printStackTrace();
         }
     }
 
@@ -94,7 +101,8 @@ public class QuartzUtils {
             JobKey jobKey = JobKey.jobKey(jobName);
             scheduler.resumeJob(jobKey);
         } catch (SchedulerException e) {
-            System.out.println("恢复定时任务出错："+e.getMessage());
+            logger.error("恢复定时任务出错：");
+            e.printStackTrace();
         }
     }
 
@@ -112,7 +120,8 @@ public class QuartzUtils {
             JobKey jobKey = JobKey.jobKey(jobName);
             scheduler.deleteJob(jobKey);
         } catch (SchedulerException e) {
-            System.out.println("删除定时任务出错："+e.getMessage());
+            logger.error("删除定时任务出错：");
+            e.printStackTrace();
         }
     }
 
@@ -126,7 +135,8 @@ public class QuartzUtils {
         try {
             scheduler.triggerJob(jobKey);
         } catch (SchedulerException e) {
-            System.out.println("运行定时任务出错："+e.getMessage());
+            logger.error("运行定时任务出错：");
+            e.printStackTrace();
         }
     }
 }

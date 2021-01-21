@@ -29,14 +29,14 @@ public class SysUserServiceImpl implements SysUserService {
     @Transactional
     @Override
     public SysUser findMasterSysUserByName(SysUserVO userVO) {
-        return sysUserMapper.findSysUserByName(userVO.getLoginAccount());
+        return sysUserMapper.findUserByLoginAccount(userVO.getLoginAccount());
     }
 
     @MyDataSource("second")
     @Transactional
     @Override
     public SysUser findSecondSysUserByName(SysUserVO userVO) {
-        return sysUserMapper.findSysUserByName(userVO.getLoginAccount());
+        return sysUserMapper.findUserByLoginAccount(userVO.getLoginAccount());
     }
 
     /**
@@ -45,7 +45,7 @@ public class SysUserServiceImpl implements SysUserService {
     @MyDataSource
     @Override
     public int addMasterSysUser(SysUser sysUser) {
-        sysUserMapper.addSysUser(sysUser);
+        sysUserMapper.insertSelective(sysUser);
         throw new RuntimeErrorException(new Error("master error!!!!!"));
     }
 
@@ -56,7 +56,7 @@ public class SysUserServiceImpl implements SysUserService {
     @Transactional
     @Override
     public int addSecondSysUser(SysUser sysUser) {
-        sysUserMapper.addSysUser(sysUser);
+        sysUserMapper.insertSelective(sysUser);
         throw new RuntimeErrorException(new Error("second error!!!!!"));
     }
 

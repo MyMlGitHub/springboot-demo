@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.CourtDictionaryMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.CourtDictionary">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CODE" jdbcType="VARCHAR" property="code" />
+    <result column="PARENT_CODE" jdbcType="VARCHAR" property="parentCode" />
+    <result column="GRADE_CODE" jdbcType="VARCHAR" property="gradeCode" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="WORDS" jdbcType="VARCHAR" property="words" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="DEL_FLAG" jdbcType="CHAR" property="delFlag" />
+    <result column="court_level" jdbcType="VARCHAR" property="courtLevel" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, CODE, PARENT_CODE, GRADE_CODE, NAME, WORDS, CREATE_DATE, DEL_FLAG, court_level
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from court_dictionary
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from court_dictionary
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.CourtDictionary">
+    insert into court_dictionary (ID, CODE, PARENT_CODE, 
+      GRADE_CODE, NAME, WORDS, 
+      CREATE_DATE, DEL_FLAG, court_level
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{parentCode,jdbcType=VARCHAR}, 
+      #{gradeCode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{words,jdbcType=VARCHAR}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=CHAR}, #{courtLevel,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.CourtDictionary">
+    insert into court_dictionary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="code != null">
+        CODE,
+      </if>
+      <if test="parentCode != null">
+        PARENT_CODE,
+      </if>
+      <if test="gradeCode != null">
+        GRADE_CODE,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="words != null">
+        WORDS,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="courtLevel != null">
+        court_level,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null">
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeCode != null">
+        #{gradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="words != null">
+        #{words,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="courtLevel != null">
+        #{courtLevel,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.CourtDictionary">
+    update court_dictionary
+    <set>
+      <if test="code != null">
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null">
+        PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeCode != null">
+        GRADE_CODE = #{gradeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="words != null">
+        WORDS = #{words,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="courtLevel != null">
+        court_level = #{courtLevel,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.CourtDictionary">
+    update court_dictionary
+    set CODE = #{code,jdbcType=VARCHAR},
+      PARENT_CODE = #{parentCode,jdbcType=VARCHAR},
+      GRADE_CODE = #{gradeCode,jdbcType=VARCHAR},
+      NAME = #{name,jdbcType=VARCHAR},
+      WORDS = #{words,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      DEL_FLAG = #{delFlag,jdbcType=CHAR},
+      court_level = #{courtLevel,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

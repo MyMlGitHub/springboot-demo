@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyLawAgentInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyLawAgentInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="AGENT_TYPE" jdbcType="CHAR" property="agentType" />
+    <result column="MAIN_CONTACTS" jdbcType="BIT" property="mainContacts" />
+    <result column="AGENT_IDENTITY" jdbcType="CHAR" property="agentIdentity" />
+    <result column="CERTIFICATES_TYPE" jdbcType="CHAR" property="certificatesType" />
+    <result column="ID_NO" jdbcType="VARCHAR" property="idNo" />
+    <result column="RELATION" jdbcType="VARCHAR" property="relation" />
+    <result column="ENTRUST_POWER" jdbcType="CHAR" property="entrustPower" />
+    <result column="ENTRUST_POWER_DETAIL" jdbcType="VARCHAR" property="entrustPowerDetail" />
+    <result column="AGENT_NAME" jdbcType="VARCHAR" property="agentName" />
+    <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="COMPANY_NAME" jdbcType="VARCHAR" property="companyName" />
+    <result column="SEND_ADDRESS" jdbcType="VARCHAR" property="sendAddress" />
+    <result column="LAWYER_CARD" jdbcType="VARCHAR" property="lawyerCard" />
+    <result column="ENTRUST_FILE" jdbcType="VARCHAR" property="entrustFile" />
+    <result column="LETTER_FILE" jdbcType="VARCHAR" property="letterFile" />
+    <result column="DEL_FLAG" jdbcType="INTEGER" property="delFlag" />
+    <result column="DOMICILE" jdbcType="VARCHAR" property="domicile" />
+    <result column="RESIDENCE" jdbcType="VARCHAR" property="residence" />
+    <result column="IS_LIVE" jdbcType="CHAR" property="isLive" />
+    <result column="ID_FRONT" jdbcType="VARCHAR" property="idFront" />
+    <result column="ID_BACK" jdbcType="VARCHAR" property="idBack" />
+    <result column="AGENT_IDENTITY_ITEM" jdbcType="INTEGER" property="agentIdentityItem" />
+    <result column="RELATION_SUPPORT" jdbcType="VARCHAR" property="relationSupport" />
+    <result column="JY_LAW_APPLYER_INFO_ID" jdbcType="INTEGER" property="jyLawApplyerInfoId" />
+    <result column="FEE_CERTIFICATE" jdbcType="VARCHAR" property="feeCertificate" />
+    <result column="SEX" jdbcType="CHAR" property="sex" />
+    <result column="NATION" jdbcType="VARCHAR" property="nation" />
+    <result column="BIRTH_DAY" jdbcType="TIMESTAMP" property="birthDay" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, AGENT_TYPE, MAIN_CONTACTS, AGENT_IDENTITY, CERTIFICATES_TYPE, ID_NO, RELATION, 
+    ENTRUST_POWER, ENTRUST_POWER_DETAIL, AGENT_NAME, TELEPHONE, EMAIL, COMPANY_NAME, 
+    SEND_ADDRESS, LAWYER_CARD, ENTRUST_FILE, LETTER_FILE, DEL_FLAG, DOMICILE, RESIDENCE, 
+    IS_LIVE, ID_FRONT, ID_BACK, AGENT_IDENTITY_ITEM, RELATION_SUPPORT, JY_LAW_APPLYER_INFO_ID, 
+    FEE_CERTIFICATE, SEX, NATION, BIRTH_DAY
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jy_law_agent_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_law_agent_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyLawAgentInfo">
+    insert into jy_law_agent_info (ID, AGENT_TYPE, MAIN_CONTACTS, 
+      AGENT_IDENTITY, CERTIFICATES_TYPE, ID_NO, 
+      RELATION, ENTRUST_POWER, ENTRUST_POWER_DETAIL, 
+      AGENT_NAME, TELEPHONE, EMAIL, 
+      COMPANY_NAME, SEND_ADDRESS, LAWYER_CARD, 
+      ENTRUST_FILE, LETTER_FILE, DEL_FLAG, 
+      DOMICILE, RESIDENCE, IS_LIVE, 
+      ID_FRONT, ID_BACK, AGENT_IDENTITY_ITEM, 
+      RELATION_SUPPORT, JY_LAW_APPLYER_INFO_ID, FEE_CERTIFICATE, 
+      SEX, NATION, BIRTH_DAY
+      )
+    values (#{id,jdbcType=INTEGER}, #{agentType,jdbcType=CHAR}, #{mainContacts,jdbcType=BIT}, 
+      #{agentIdentity,jdbcType=CHAR}, #{certificatesType,jdbcType=CHAR}, #{idNo,jdbcType=VARCHAR}, 
+      #{relation,jdbcType=VARCHAR}, #{entrustPower,jdbcType=CHAR}, #{entrustPowerDetail,jdbcType=VARCHAR}, 
+      #{agentName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{sendAddress,jdbcType=VARCHAR}, #{lawyerCard,jdbcType=VARCHAR}, 
+      #{entrustFile,jdbcType=VARCHAR}, #{letterFile,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER}, 
+      #{domicile,jdbcType=VARCHAR}, #{residence,jdbcType=VARCHAR}, #{isLive,jdbcType=CHAR}, 
+      #{idFront,jdbcType=VARCHAR}, #{idBack,jdbcType=VARCHAR}, #{agentIdentityItem,jdbcType=INTEGER}, 
+      #{relationSupport,jdbcType=VARCHAR}, #{jyLawApplyerInfoId,jdbcType=INTEGER}, #{feeCertificate,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{nation,jdbcType=VARCHAR}, #{birthDay,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyLawAgentInfo">
+    insert into jy_law_agent_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="agentType != null">
+        AGENT_TYPE,
+      </if>
+      <if test="mainContacts != null">
+        MAIN_CONTACTS,
+      </if>
+      <if test="agentIdentity != null">
+        AGENT_IDENTITY,
+      </if>
+      <if test="certificatesType != null">
+        CERTIFICATES_TYPE,
+      </if>
+      <if test="idNo != null">
+        ID_NO,
+      </if>
+      <if test="relation != null">
+        RELATION,
+      </if>
+      <if test="entrustPower != null">
+        ENTRUST_POWER,
+      </if>
+      <if test="entrustPowerDetail != null">
+        ENTRUST_POWER_DETAIL,
+      </if>
+      <if test="agentName != null">
+        AGENT_NAME,
+      </if>
+      <if test="telephone != null">
+        TELEPHONE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME,
+      </if>
+      <if test="sendAddress != null">
+        SEND_ADDRESS,
+      </if>
+      <if test="lawyerCard != null">
+        LAWYER_CARD,
+      </if>
+      <if test="entrustFile != null">
+        ENTRUST_FILE,
+      </if>
+      <if test="letterFile != null">
+        LETTER_FILE,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="domicile != null">
+        DOMICILE,
+      </if>
+      <if test="residence != null">
+        RESIDENCE,
+      </if>
+      <if test="isLive != null">
+        IS_LIVE,
+      </if>
+      <if test="idFront != null">
+        ID_FRONT,
+      </if>
+      <if test="idBack != null">
+        ID_BACK,
+      </if>
+      <if test="agentIdentityItem != null">
+        AGENT_IDENTITY_ITEM,
+      </if>
+      <if test="relationSupport != null">
+        RELATION_SUPPORT,
+      </if>
+      <if test="jyLawApplyerInfoId != null">
+        JY_LAW_APPLYER_INFO_ID,
+      </if>
+      <if test="feeCertificate != null">
+        FEE_CERTIFICATE,
+      </if>
+      <if test="sex != null">
+        SEX,
+      </if>
+      <if test="nation != null">
+        NATION,
+      </if>
+      <if test="birthDay != null">
+        BIRTH_DAY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentType != null">
+        #{agentType,jdbcType=CHAR},
+      </if>
+      <if test="mainContacts != null">
+        #{mainContacts,jdbcType=BIT},
+      </if>
+      <if test="agentIdentity != null">
+        #{agentIdentity,jdbcType=CHAR},
+      </if>
+      <if test="certificatesType != null">
+        #{certificatesType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null">
+        #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null">
+        #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustPower != null">
+        #{entrustPower,jdbcType=CHAR},
+      </if>
+      <if test="entrustPowerDetail != null">
+        #{entrustPowerDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null">
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendAddress != null">
+        #{sendAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerCard != null">
+        #{lawyerCard,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustFile != null">
+        #{entrustFile,jdbcType=VARCHAR},
+      </if>
+      <if test="letterFile != null">
+        #{letterFile,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="domicile != null">
+        #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="isLive != null">
+        #{isLive,jdbcType=CHAR},
+      </if>
+      <if test="idFront != null">
+        #{idFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idBack != null">
+        #{idBack,jdbcType=VARCHAR},
+      </if>
+      <if test="agentIdentityItem != null">
+        #{agentIdentityItem,jdbcType=INTEGER},
+      </if>
+      <if test="relationSupport != null">
+        #{relationSupport,jdbcType=VARCHAR},
+      </if>
+      <if test="jyLawApplyerInfoId != null">
+        #{jyLawApplyerInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="feeCertificate != null">
+        #{feeCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="nation != null">
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null">
+        #{birthDay,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyLawAgentInfo">
+    update jy_law_agent_info
+    <set>
+      <if test="agentType != null">
+        AGENT_TYPE = #{agentType,jdbcType=CHAR},
+      </if>
+      <if test="mainContacts != null">
+        MAIN_CONTACTS = #{mainContacts,jdbcType=BIT},
+      </if>
+      <if test="agentIdentity != null">
+        AGENT_IDENTITY = #{agentIdentity,jdbcType=CHAR},
+      </if>
+      <if test="certificatesType != null">
+        CERTIFICATES_TYPE = #{certificatesType,jdbcType=CHAR},
+      </if>
+      <if test="idNo != null">
+        ID_NO = #{idNo,jdbcType=VARCHAR},
+      </if>
+      <if test="relation != null">
+        RELATION = #{relation,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustPower != null">
+        ENTRUST_POWER = #{entrustPower,jdbcType=CHAR},
+      </if>
+      <if test="entrustPowerDetail != null">
+        ENTRUST_POWER_DETAIL = #{entrustPowerDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null">
+        AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="sendAddress != null">
+        SEND_ADDRESS = #{sendAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lawyerCard != null">
+        LAWYER_CARD = #{lawyerCard,jdbcType=VARCHAR},
+      </if>
+      <if test="entrustFile != null">
+        ENTRUST_FILE = #{entrustFile,jdbcType=VARCHAR},
+      </if>
+      <if test="letterFile != null">
+        LETTER_FILE = #{letterFile,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="domicile != null">
+        DOMICILE = #{domicile,jdbcType=VARCHAR},
+      </if>
+      <if test="residence != null">
+        RESIDENCE = #{residence,jdbcType=VARCHAR},
+      </if>
+      <if test="isLive != null">
+        IS_LIVE = #{isLive,jdbcType=CHAR},
+      </if>
+      <if test="idFront != null">
+        ID_FRONT = #{idFront,jdbcType=VARCHAR},
+      </if>
+      <if test="idBack != null">
+        ID_BACK = #{idBack,jdbcType=VARCHAR},
+      </if>
+      <if test="agentIdentityItem != null">
+        AGENT_IDENTITY_ITEM = #{agentIdentityItem,jdbcType=INTEGER},
+      </if>
+      <if test="relationSupport != null">
+        RELATION_SUPPORT = #{relationSupport,jdbcType=VARCHAR},
+      </if>
+      <if test="jyLawApplyerInfoId != null">
+        JY_LAW_APPLYER_INFO_ID = #{jyLawApplyerInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="feeCertificate != null">
+        FEE_CERTIFICATE = #{feeCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        SEX = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="nation != null">
+        NATION = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="birthDay != null">
+        BIRTH_DAY = #{birthDay,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyLawAgentInfo">
+    update jy_law_agent_info
+    set AGENT_TYPE = #{agentType,jdbcType=CHAR},
+      MAIN_CONTACTS = #{mainContacts,jdbcType=BIT},
+      AGENT_IDENTITY = #{agentIdentity,jdbcType=CHAR},
+      CERTIFICATES_TYPE = #{certificatesType,jdbcType=CHAR},
+      ID_NO = #{idNo,jdbcType=VARCHAR},
+      RELATION = #{relation,jdbcType=VARCHAR},
+      ENTRUST_POWER = #{entrustPower,jdbcType=CHAR},
+      ENTRUST_POWER_DETAIL = #{entrustPowerDetail,jdbcType=VARCHAR},
+      AGENT_NAME = #{agentName,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      COMPANY_NAME = #{companyName,jdbcType=VARCHAR},
+      SEND_ADDRESS = #{sendAddress,jdbcType=VARCHAR},
+      LAWYER_CARD = #{lawyerCard,jdbcType=VARCHAR},
+      ENTRUST_FILE = #{entrustFile,jdbcType=VARCHAR},
+      LETTER_FILE = #{letterFile,jdbcType=VARCHAR},
+      DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      DOMICILE = #{domicile,jdbcType=VARCHAR},
+      RESIDENCE = #{residence,jdbcType=VARCHAR},
+      IS_LIVE = #{isLive,jdbcType=CHAR},
+      ID_FRONT = #{idFront,jdbcType=VARCHAR},
+      ID_BACK = #{idBack,jdbcType=VARCHAR},
+      AGENT_IDENTITY_ITEM = #{agentIdentityItem,jdbcType=INTEGER},
+      RELATION_SUPPORT = #{relationSupport,jdbcType=VARCHAR},
+      JY_LAW_APPLYER_INFO_ID = #{jyLawApplyerInfoId,jdbcType=INTEGER},
+      FEE_CERTIFICATE = #{feeCertificate,jdbcType=VARCHAR},
+      SEX = #{sex,jdbcType=CHAR},
+      NATION = #{nation,jdbcType=VARCHAR},
+      BIRTH_DAY = #{birthDay,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

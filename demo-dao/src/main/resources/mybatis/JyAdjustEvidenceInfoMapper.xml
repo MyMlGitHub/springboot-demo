@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyAdjustEvidenceInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyAdjustEvidenceInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="CLASSIFY" jdbcType="VARCHAR" property="classify" />
+    <result column="PICTURE" jdbcType="VARCHAR" property="picture" />
+    <result column="JY_ADJUST_INFO_ID" jdbcType="INTEGER" property="jyAdjustInfoId" />
+    <result column="DEL_FLAG" jdbcType="INTEGER" property="delFlag" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="OPERATE_NAME" jdbcType="VARCHAR" property="operateName" />
+    <result column="OPERATE_STATE" jdbcType="VARCHAR" property="operateState" />
+    <result column="REAL_STATE" jdbcType="CHAR" property="realState" />
+    <result column="REAL_DES" jdbcType="VARCHAR" property="realDes" />
+    <result column="LEGITIMACY_STATE" jdbcType="CHAR" property="legitimacyState" />
+    <result column="LEGITIMACY_DES" jdbcType="VARCHAR" property="legitimacyDes" />
+    <result column="RELATION_STATE" jdbcType="CHAR" property="relationState" />
+    <result column="RELATION_DES" jdbcType="VARCHAR" property="relationDes" />
+    <result column="JUDGE_STATE" jdbcType="CHAR" property="judgeState" />
+    <result column="IS_DISAGREE" jdbcType="CHAR" property="isDisagree" />
+    <result column="EVIDENCE_NAME" jdbcType="VARCHAR" property="evidenceName" />
+    <result column="EVIDENCE_DATE" jdbcType="TIMESTAMP" property="evidenceDate" />
+    <result column="PERSON_TYPE" jdbcType="CHAR" property="personType" />
+    <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+    <result column="SOURCE" jdbcType="CHAR" property="source" />
+    <result column="EVIDENCE_TYPE" jdbcType="VARCHAR" property="evidenceType" />
+    <result column="EVIDENCE_SUFFIX" jdbcType="VARCHAR" property="evidenceSuffix" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, NAME, DESCRIPTION, CLASSIFY, PICTURE, JY_ADJUST_INFO_ID, DEL_FLAG, CREATE_DATE, 
+    OPERATE_NAME, OPERATE_STATE, REAL_STATE, REAL_DES, LEGITIMACY_STATE, LEGITIMACY_DES, 
+    RELATION_STATE, RELATION_DES, JUDGE_STATE, IS_DISAGREE, EVIDENCE_NAME, EVIDENCE_DATE, 
+    PERSON_TYPE, SERIAL_NO, SOURCE, EVIDENCE_TYPE, EVIDENCE_SUFFIX
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jy_adjust_evidence_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_adjust_evidence_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyAdjustEvidenceInfo">
+    insert into jy_adjust_evidence_info (id, NAME, DESCRIPTION, 
+      CLASSIFY, PICTURE, JY_ADJUST_INFO_ID, 
+      DEL_FLAG, CREATE_DATE, OPERATE_NAME, 
+      OPERATE_STATE, REAL_STATE, REAL_DES, 
+      LEGITIMACY_STATE, LEGITIMACY_DES, RELATION_STATE, 
+      RELATION_DES, JUDGE_STATE, IS_DISAGREE, 
+      EVIDENCE_NAME, EVIDENCE_DATE, PERSON_TYPE, 
+      SERIAL_NO, SOURCE, EVIDENCE_TYPE, 
+      EVIDENCE_SUFFIX)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{classify,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{jyAdjustInfoId,jdbcType=INTEGER}, 
+      #{delFlag,jdbcType=INTEGER}, #{createDate,jdbcType=TIMESTAMP}, #{operateName,jdbcType=VARCHAR}, 
+      #{operateState,jdbcType=VARCHAR}, #{realState,jdbcType=CHAR}, #{realDes,jdbcType=VARCHAR}, 
+      #{legitimacyState,jdbcType=CHAR}, #{legitimacyDes,jdbcType=VARCHAR}, #{relationState,jdbcType=CHAR}, 
+      #{relationDes,jdbcType=VARCHAR}, #{judgeState,jdbcType=CHAR}, #{isDisagree,jdbcType=CHAR}, 
+      #{evidenceName,jdbcType=VARCHAR}, #{evidenceDate,jdbcType=TIMESTAMP}, #{personType,jdbcType=CHAR}, 
+      #{serialNo,jdbcType=VARCHAR}, #{source,jdbcType=CHAR}, #{evidenceType,jdbcType=VARCHAR}, 
+      #{evidenceSuffix,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyAdjustEvidenceInfo">
+    insert into jy_adjust_evidence_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="description != null">
+        DESCRIPTION,
+      </if>
+      <if test="classify != null">
+        CLASSIFY,
+      </if>
+      <if test="picture != null">
+        PICTURE,
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="operateName != null">
+        OPERATE_NAME,
+      </if>
+      <if test="operateState != null">
+        OPERATE_STATE,
+      </if>
+      <if test="realState != null">
+        REAL_STATE,
+      </if>
+      <if test="realDes != null">
+        REAL_DES,
+      </if>
+      <if test="legitimacyState != null">
+        LEGITIMACY_STATE,
+      </if>
+      <if test="legitimacyDes != null">
+        LEGITIMACY_DES,
+      </if>
+      <if test="relationState != null">
+        RELATION_STATE,
+      </if>
+      <if test="relationDes != null">
+        RELATION_DES,
+      </if>
+      <if test="judgeState != null">
+        JUDGE_STATE,
+      </if>
+      <if test="isDisagree != null">
+        IS_DISAGREE,
+      </if>
+      <if test="evidenceName != null">
+        EVIDENCE_NAME,
+      </if>
+      <if test="evidenceDate != null">
+        EVIDENCE_DATE,
+      </if>
+      <if test="personType != null">
+        PERSON_TYPE,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="source != null">
+        SOURCE,
+      </if>
+      <if test="evidenceType != null">
+        EVIDENCE_TYPE,
+      </if>
+      <if test="evidenceSuffix != null">
+        EVIDENCE_SUFFIX,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="classify != null">
+        #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateName != null">
+        #{operateName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateState != null">
+        #{operateState,jdbcType=VARCHAR},
+      </if>
+      <if test="realState != null">
+        #{realState,jdbcType=CHAR},
+      </if>
+      <if test="realDes != null">
+        #{realDes,jdbcType=VARCHAR},
+      </if>
+      <if test="legitimacyState != null">
+        #{legitimacyState,jdbcType=CHAR},
+      </if>
+      <if test="legitimacyDes != null">
+        #{legitimacyDes,jdbcType=VARCHAR},
+      </if>
+      <if test="relationState != null">
+        #{relationState,jdbcType=CHAR},
+      </if>
+      <if test="relationDes != null">
+        #{relationDes,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeState != null">
+        #{judgeState,jdbcType=CHAR},
+      </if>
+      <if test="isDisagree != null">
+        #{isDisagree,jdbcType=CHAR},
+      </if>
+      <if test="evidenceName != null">
+        #{evidenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="evidenceDate != null">
+        #{evidenceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personType != null">
+        #{personType,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=CHAR},
+      </if>
+      <if test="evidenceType != null">
+        #{evidenceType,jdbcType=VARCHAR},
+      </if>
+      <if test="evidenceSuffix != null">
+        #{evidenceSuffix,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyAdjustEvidenceInfo">
+    update jy_adjust_evidence_info
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="classify != null">
+        CLASSIFY = #{classify,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null">
+        PICTURE = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateName != null">
+        OPERATE_NAME = #{operateName,jdbcType=VARCHAR},
+      </if>
+      <if test="operateState != null">
+        OPERATE_STATE = #{operateState,jdbcType=VARCHAR},
+      </if>
+      <if test="realState != null">
+        REAL_STATE = #{realState,jdbcType=CHAR},
+      </if>
+      <if test="realDes != null">
+        REAL_DES = #{realDes,jdbcType=VARCHAR},
+      </if>
+      <if test="legitimacyState != null">
+        LEGITIMACY_STATE = #{legitimacyState,jdbcType=CHAR},
+      </if>
+      <if test="legitimacyDes != null">
+        LEGITIMACY_DES = #{legitimacyDes,jdbcType=VARCHAR},
+      </if>
+      <if test="relationState != null">
+        RELATION_STATE = #{relationState,jdbcType=CHAR},
+      </if>
+      <if test="relationDes != null">
+        RELATION_DES = #{relationDes,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeState != null">
+        JUDGE_STATE = #{judgeState,jdbcType=CHAR},
+      </if>
+      <if test="isDisagree != null">
+        IS_DISAGREE = #{isDisagree,jdbcType=CHAR},
+      </if>
+      <if test="evidenceName != null">
+        EVIDENCE_NAME = #{evidenceName,jdbcType=VARCHAR},
+      </if>
+      <if test="evidenceDate != null">
+        EVIDENCE_DATE = #{evidenceDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="personType != null">
+        PERSON_TYPE = #{personType,jdbcType=CHAR},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        SOURCE = #{source,jdbcType=CHAR},
+      </if>
+      <if test="evidenceType != null">
+        EVIDENCE_TYPE = #{evidenceType,jdbcType=VARCHAR},
+      </if>
+      <if test="evidenceSuffix != null">
+        EVIDENCE_SUFFIX = #{evidenceSuffix,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyAdjustEvidenceInfo">
+    update jy_adjust_evidence_info
+    set NAME = #{name,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      CLASSIFY = #{classify,jdbcType=VARCHAR},
+      PICTURE = #{picture,jdbcType=VARCHAR},
+      JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      OPERATE_NAME = #{operateName,jdbcType=VARCHAR},
+      OPERATE_STATE = #{operateState,jdbcType=VARCHAR},
+      REAL_STATE = #{realState,jdbcType=CHAR},
+      REAL_DES = #{realDes,jdbcType=VARCHAR},
+      LEGITIMACY_STATE = #{legitimacyState,jdbcType=CHAR},
+      LEGITIMACY_DES = #{legitimacyDes,jdbcType=VARCHAR},
+      RELATION_STATE = #{relationState,jdbcType=CHAR},
+      RELATION_DES = #{relationDes,jdbcType=VARCHAR},
+      JUDGE_STATE = #{judgeState,jdbcType=CHAR},
+      IS_DISAGREE = #{isDisagree,jdbcType=CHAR},
+      EVIDENCE_NAME = #{evidenceName,jdbcType=VARCHAR},
+      EVIDENCE_DATE = #{evidenceDate,jdbcType=TIMESTAMP},
+      PERSON_TYPE = #{personType,jdbcType=CHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      SOURCE = #{source,jdbcType=CHAR},
+      EVIDENCE_TYPE = #{evidenceType,jdbcType=VARCHAR},
+      EVIDENCE_SUFFIX = #{evidenceSuffix,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

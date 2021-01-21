@@ -1,11 +1,19 @@
 package com.ml.mapper;
 
 import com.ml.po.SysUser;
-import org.springframework.data.repository.query.Param;
 
 public interface SysUserMapper {
+    int deleteByPrimaryKey(Integer id);
 
-    SysUser findSysUserByName(@Param("loginAccount") String loginAccount);
-    int addSysUser(SysUser SysUser);
-    
+    int insert(SysUser record);
+
+    int insertSelective(SysUser record);
+
+    SysUser selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(SysUser record);
+
+    int updateByPrimaryKey(SysUser record);
+
+    SysUser findUserByLoginAccount(String loginAccount);
 }

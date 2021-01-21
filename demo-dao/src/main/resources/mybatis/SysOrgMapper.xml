@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.SysOrgMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.SysOrg">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+    <result column="CATEGORY" jdbcType="VARCHAR" property="category" />
+    <result column="ORG_CODE" jdbcType="VARCHAR" property="orgCode" />
+    <result column="PARENT_ID" jdbcType="INTEGER" property="parentId" />
+    <result column="EXT_PRO" jdbcType="VARCHAR" property="extPro" />
+    <result column="DEL_FLAG" jdbcType="VARCHAR" property="delFlag" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="REGULATION_NO" jdbcType="INTEGER" property="regulationNo" />
+    <result column="SERIAL_NO" jdbcType="INTEGER" property="serialNo" />
+    <result column="APPRAISAL_NO" jdbcType="INTEGER" property="appraisalNo" />
+    <result column="REGION_CODE" jdbcType="VARCHAR" property="regionCode" />
+    <result column="REGION_NAME" jdbcType="VARCHAR" property="regionName" />
+    <result column="COURT_CODE" jdbcType="VARCHAR" property="courtCode" />
+    <result column="ORG_FULL_NAME" jdbcType="VARCHAR" property="orgFullName" />
+    <result column="INSURANCE_CODE" jdbcType="VARCHAR" property="insuranceCode" />
+    <result column="JUDGE_TYPE" jdbcType="VARCHAR" property="judgeType" />
+    <result column="INTERFACE_ADDRESS_ID" jdbcType="VARCHAR" property="interfaceAddressId" />
+    <result column="COMPENSATE_SERIAL_NO" jdbcType="INTEGER" property="compensateSerialNo" />
+    <result column="ALGORITHM_SERIAL_NO" jdbcType="INTEGER" property="algorithmSerialNo" />
+    <result column="SECOND_SERIAL_NO" jdbcType="INTEGER" property="secondSerialNo" />
+    <result column="REGIS_PUSH_POWER" jdbcType="VARCHAR" property="regisPushPower" />
+    <result column="SMA_PROG_POWER" jdbcType="VARCHAR" property="smaProgPower" />
+    <result column="VID_OPEN_POWER" jdbcType="VARCHAR" property="vidOpenPower" />
+    <result column="SMA_PRO_VID_POWER" jdbcType="VARCHAR" property="smaProVidPower" />
+    <result column="IS_SEND_APPRAISAL" jdbcType="CHAR" property="isSendAppraisal" />
+    <result column="SHORT_NAME" jdbcType="VARCHAR" property="shortName" />
+    <result column="TYPE_CODE" jdbcType="VARCHAR" property="typeCode" />
+    <result column="PLATFORM_TYPE" jdbcType="CHAR" property="platformType" />
+    <result column="IS_MEDIATION_JOINT_JUDGE" jdbcType="CHAR" property="isMediationJointJudge" />
+    <result column="BUTTONS" jdbcType="VARCHAR" property="buttons" />
+    <result column="IS_CELLPHONE_VALIDATE" jdbcType="CHAR" property="isCellphoneValidate" />
+    <result column="IS_TEST" jdbcType="CHAR" property="isTest" />
+    <result column="insurance_id" jdbcType="VARCHAR" property="insuranceId" />
+    <result column="IS_LITIGATION_OR_APPROVE" jdbcType="CHAR" property="isLitigationOrApprove" />
+    <result column="is_litigationPreservation" jdbcType="CHAR" property="isLitigationpreservation" />
+    <result column="PERSON_NAME" jdbcType="VARCHAR" property="personName" />
+    <result column="TELEPHONE" jdbcType="VARCHAR" property="telephone" />
+    <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+    <result column="supreme" jdbcType="CHAR" property="supreme" />
+    <result column="BIG_ADJUST_ORG_ID" jdbcType="VARCHAR" property="bigAdjustOrgId" />
+    <result column="VERSION" jdbcType="INTEGER" property="version" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, ORG_NAME, CATEGORY, ORG_CODE, PARENT_ID, EXT_PRO, DEL_FLAG, CREATE_DATE, REGULATION_NO, 
+    SERIAL_NO, APPRAISAL_NO, REGION_CODE, REGION_NAME, COURT_CODE, ORG_FULL_NAME, INSURANCE_CODE, 
+    JUDGE_TYPE, INTERFACE_ADDRESS_ID, COMPENSATE_SERIAL_NO, ALGORITHM_SERIAL_NO, SECOND_SERIAL_NO, 
+    REGIS_PUSH_POWER, SMA_PROG_POWER, VID_OPEN_POWER, SMA_PRO_VID_POWER, IS_SEND_APPRAISAL, 
+    SHORT_NAME, TYPE_CODE, PLATFORM_TYPE, IS_MEDIATION_JOINT_JUDGE, BUTTONS, IS_CELLPHONE_VALIDATE, 
+    IS_TEST, insurance_id, IS_LITIGATION_OR_APPROVE, is_litigationPreservation, PERSON_NAME, 
+    TELEPHONE, EMAIL, supreme, BIG_ADJUST_ORG_ID, VERSION
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_org
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_org
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.SysOrg">
+    insert into sys_org (ID, ORG_NAME, CATEGORY, 
+      ORG_CODE, PARENT_ID, EXT_PRO, 
+      DEL_FLAG, CREATE_DATE, REGULATION_NO, 
+      SERIAL_NO, APPRAISAL_NO, REGION_CODE, 
+      REGION_NAME, COURT_CODE, ORG_FULL_NAME, 
+      INSURANCE_CODE, JUDGE_TYPE, INTERFACE_ADDRESS_ID, 
+      COMPENSATE_SERIAL_NO, ALGORITHM_SERIAL_NO, 
+      SECOND_SERIAL_NO, REGIS_PUSH_POWER, SMA_PROG_POWER, 
+      VID_OPEN_POWER, SMA_PRO_VID_POWER, IS_SEND_APPRAISAL, 
+      SHORT_NAME, TYPE_CODE, PLATFORM_TYPE, 
+      IS_MEDIATION_JOINT_JUDGE, BUTTONS, IS_CELLPHONE_VALIDATE, 
+      IS_TEST, insurance_id, IS_LITIGATION_OR_APPROVE, 
+      is_litigationPreservation, PERSON_NAME, TELEPHONE, 
+      EMAIL, supreme, BIG_ADJUST_ORG_ID, 
+      VERSION)
+    values (#{id,jdbcType=INTEGER}, #{orgName,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{orgCode,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{extPro,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{regulationNo,jdbcType=INTEGER}, 
+      #{serialNo,jdbcType=INTEGER}, #{appraisalNo,jdbcType=INTEGER}, #{regionCode,jdbcType=VARCHAR}, 
+      #{regionName,jdbcType=VARCHAR}, #{courtCode,jdbcType=VARCHAR}, #{orgFullName,jdbcType=VARCHAR}, 
+      #{insuranceCode,jdbcType=VARCHAR}, #{judgeType,jdbcType=VARCHAR}, #{interfaceAddressId,jdbcType=VARCHAR}, 
+      #{compensateSerialNo,jdbcType=INTEGER}, #{algorithmSerialNo,jdbcType=INTEGER}, 
+      #{secondSerialNo,jdbcType=INTEGER}, #{regisPushPower,jdbcType=VARCHAR}, #{smaProgPower,jdbcType=VARCHAR}, 
+      #{vidOpenPower,jdbcType=VARCHAR}, #{smaProVidPower,jdbcType=VARCHAR}, #{isSendAppraisal,jdbcType=CHAR}, 
+      #{shortName,jdbcType=VARCHAR}, #{typeCode,jdbcType=VARCHAR}, #{platformType,jdbcType=CHAR}, 
+      #{isMediationJointJudge,jdbcType=CHAR}, #{buttons,jdbcType=VARCHAR}, #{isCellphoneValidate,jdbcType=CHAR}, 
+      #{isTest,jdbcType=CHAR}, #{insuranceId,jdbcType=VARCHAR}, #{isLitigationOrApprove,jdbcType=CHAR}, 
+      #{isLitigationpreservation,jdbcType=CHAR}, #{personName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{supreme,jdbcType=CHAR}, #{bigAdjustOrgId,jdbcType=VARCHAR}, 
+      #{version,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.SysOrg">
+    insert into sys_org
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="orgName != null">
+        ORG_NAME,
+      </if>
+      <if test="category != null">
+        CATEGORY,
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE,
+      </if>
+      <if test="parentId != null">
+        PARENT_ID,
+      </if>
+      <if test="extPro != null">
+        EXT_PRO,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="regulationNo != null">
+        REGULATION_NO,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="appraisalNo != null">
+        APPRAISAL_NO,
+      </if>
+      <if test="regionCode != null">
+        REGION_CODE,
+      </if>
+      <if test="regionName != null">
+        REGION_NAME,
+      </if>
+      <if test="courtCode != null">
+        COURT_CODE,
+      </if>
+      <if test="orgFullName != null">
+        ORG_FULL_NAME,
+      </if>
+      <if test="insuranceCode != null">
+        INSURANCE_CODE,
+      </if>
+      <if test="judgeType != null">
+        JUDGE_TYPE,
+      </if>
+      <if test="interfaceAddressId != null">
+        INTERFACE_ADDRESS_ID,
+      </if>
+      <if test="compensateSerialNo != null">
+        COMPENSATE_SERIAL_NO,
+      </if>
+      <if test="algorithmSerialNo != null">
+        ALGORITHM_SERIAL_NO,
+      </if>
+      <if test="secondSerialNo != null">
+        SECOND_SERIAL_NO,
+      </if>
+      <if test="regisPushPower != null">
+        REGIS_PUSH_POWER,
+      </if>
+      <if test="smaProgPower != null">
+        SMA_PROG_POWER,
+      </if>
+      <if test="vidOpenPower != null">
+        VID_OPEN_POWER,
+      </if>
+      <if test="smaProVidPower != null">
+        SMA_PRO_VID_POWER,
+      </if>
+      <if test="isSendAppraisal != null">
+        IS_SEND_APPRAISAL,
+      </if>
+      <if test="shortName != null">
+        SHORT_NAME,
+      </if>
+      <if test="typeCode != null">
+        TYPE_CODE,
+      </if>
+      <if test="platformType != null">
+        PLATFORM_TYPE,
+      </if>
+      <if test="isMediationJointJudge != null">
+        IS_MEDIATION_JOINT_JUDGE,
+      </if>
+      <if test="buttons != null">
+        BUTTONS,
+      </if>
+      <if test="isCellphoneValidate != null">
+        IS_CELLPHONE_VALIDATE,
+      </if>
+      <if test="isTest != null">
+        IS_TEST,
+      </if>
+      <if test="insuranceId != null">
+        insurance_id,
+      </if>
+      <if test="isLitigationOrApprove != null">
+        IS_LITIGATION_OR_APPROVE,
+      </if>
+      <if test="isLitigationpreservation != null">
+        is_litigationPreservation,
+      </if>
+      <if test="personName != null">
+        PERSON_NAME,
+      </if>
+      <if test="telephone != null">
+        TELEPHONE,
+      </if>
+      <if test="email != null">
+        EMAIL,
+      </if>
+      <if test="supreme != null">
+        supreme,
+      </if>
+      <if test="bigAdjustOrgId != null">
+        BIG_ADJUST_ORG_ID,
+      </if>
+      <if test="version != null">
+        VERSION,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="extPro != null">
+        #{extPro,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regulationNo != null">
+        #{regulationNo,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="appraisalNo != null">
+        #{appraisalNo,jdbcType=INTEGER},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="courtCode != null">
+        #{courtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgFullName != null">
+        #{orgFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCode != null">
+        #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeType != null">
+        #{judgeType,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceAddressId != null">
+        #{interfaceAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="compensateSerialNo != null">
+        #{compensateSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="algorithmSerialNo != null">
+        #{algorithmSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="secondSerialNo != null">
+        #{secondSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="regisPushPower != null">
+        #{regisPushPower,jdbcType=VARCHAR},
+      </if>
+      <if test="smaProgPower != null">
+        #{smaProgPower,jdbcType=VARCHAR},
+      </if>
+      <if test="vidOpenPower != null">
+        #{vidOpenPower,jdbcType=VARCHAR},
+      </if>
+      <if test="smaProVidPower != null">
+        #{smaProVidPower,jdbcType=VARCHAR},
+      </if>
+      <if test="isSendAppraisal != null">
+        #{isSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="shortName != null">
+        #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="platformType != null">
+        #{platformType,jdbcType=CHAR},
+      </if>
+      <if test="isMediationJointJudge != null">
+        #{isMediationJointJudge,jdbcType=CHAR},
+      </if>
+      <if test="buttons != null">
+        #{buttons,jdbcType=VARCHAR},
+      </if>
+      <if test="isCellphoneValidate != null">
+        #{isCellphoneValidate,jdbcType=CHAR},
+      </if>
+      <if test="isTest != null">
+        #{isTest,jdbcType=CHAR},
+      </if>
+      <if test="insuranceId != null">
+        #{insuranceId,jdbcType=VARCHAR},
+      </if>
+      <if test="isLitigationOrApprove != null">
+        #{isLitigationOrApprove,jdbcType=CHAR},
+      </if>
+      <if test="isLitigationpreservation != null">
+        #{isLitigationpreservation,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="supreme != null">
+        #{supreme,jdbcType=CHAR},
+      </if>
+      <if test="bigAdjustOrgId != null">
+        #{bigAdjustOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.SysOrg">
+    update sys_org
+    <set>
+      <if test="orgName != null">
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        CATEGORY = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        PARENT_ID = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="extPro != null">
+        EXT_PRO = #{extPro,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="regulationNo != null">
+        REGULATION_NO = #{regulationNo,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="appraisalNo != null">
+        APPRAISAL_NO = #{appraisalNo,jdbcType=INTEGER},
+      </if>
+      <if test="regionCode != null">
+        REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="courtCode != null">
+        COURT_CODE = #{courtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgFullName != null">
+        ORG_FULL_NAME = #{orgFullName,jdbcType=VARCHAR},
+      </if>
+      <if test="insuranceCode != null">
+        INSURANCE_CODE = #{insuranceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeType != null">
+        JUDGE_TYPE = #{judgeType,jdbcType=VARCHAR},
+      </if>
+      <if test="interfaceAddressId != null">
+        INTERFACE_ADDRESS_ID = #{interfaceAddressId,jdbcType=VARCHAR},
+      </if>
+      <if test="compensateSerialNo != null">
+        COMPENSATE_SERIAL_NO = #{compensateSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="algorithmSerialNo != null">
+        ALGORITHM_SERIAL_NO = #{algorithmSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="secondSerialNo != null">
+        SECOND_SERIAL_NO = #{secondSerialNo,jdbcType=INTEGER},
+      </if>
+      <if test="regisPushPower != null">
+        REGIS_PUSH_POWER = #{regisPushPower,jdbcType=VARCHAR},
+      </if>
+      <if test="smaProgPower != null">
+        SMA_PROG_POWER = #{smaProgPower,jdbcType=VARCHAR},
+      </if>
+      <if test="vidOpenPower != null">
+        VID_OPEN_POWER = #{vidOpenPower,jdbcType=VARCHAR},
+      </if>
+      <if test="smaProVidPower != null">
+        SMA_PRO_VID_POWER = #{smaProVidPower,jdbcType=VARCHAR},
+      </if>
+      <if test="isSendAppraisal != null">
+        IS_SEND_APPRAISAL = #{isSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="shortName != null">
+        SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeCode != null">
+        TYPE_CODE = #{typeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="platformType != null">
+        PLATFORM_TYPE = #{platformType,jdbcType=CHAR},
+      </if>
+      <if test="isMediationJointJudge != null">
+        IS_MEDIATION_JOINT_JUDGE = #{isMediationJointJudge,jdbcType=CHAR},
+      </if>
+      <if test="buttons != null">
+        BUTTONS = #{buttons,jdbcType=VARCHAR},
+      </if>
+      <if test="isCellphoneValidate != null">
+        IS_CELLPHONE_VALIDATE = #{isCellphoneValidate,jdbcType=CHAR},
+      </if>
+      <if test="isTest != null">
+        IS_TEST = #{isTest,jdbcType=CHAR},
+      </if>
+      <if test="insuranceId != null">
+        insurance_id = #{insuranceId,jdbcType=VARCHAR},
+      </if>
+      <if test="isLitigationOrApprove != null">
+        IS_LITIGATION_OR_APPROVE = #{isLitigationOrApprove,jdbcType=CHAR},
+      </if>
+      <if test="isLitigationpreservation != null">
+        is_litigationPreservation = #{isLitigationpreservation,jdbcType=CHAR},
+      </if>
+      <if test="personName != null">
+        PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="supreme != null">
+        supreme = #{supreme,jdbcType=CHAR},
+      </if>
+      <if test="bigAdjustOrgId != null">
+        BIG_ADJUST_ORG_ID = #{bigAdjustOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        VERSION = #{version,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.SysOrg">
+    update sys_org
+    set ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      CATEGORY = #{category,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=INTEGER},
+      EXT_PRO = #{extPro,jdbcType=VARCHAR},
+      DEL_FLAG = #{delFlag,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      REGULATION_NO = #{regulationNo,jdbcType=INTEGER},
+      SERIAL_NO = #{serialNo,jdbcType=INTEGER},
+      APPRAISAL_NO = #{appraisalNo,jdbcType=INTEGER},
+      REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      COURT_CODE = #{courtCode,jdbcType=VARCHAR},
+      ORG_FULL_NAME = #{orgFullName,jdbcType=VARCHAR},
+      INSURANCE_CODE = #{insuranceCode,jdbcType=VARCHAR},
+      JUDGE_TYPE = #{judgeType,jdbcType=VARCHAR},
+      INTERFACE_ADDRESS_ID = #{interfaceAddressId,jdbcType=VARCHAR},
+      COMPENSATE_SERIAL_NO = #{compensateSerialNo,jdbcType=INTEGER},
+      ALGORITHM_SERIAL_NO = #{algorithmSerialNo,jdbcType=INTEGER},
+      SECOND_SERIAL_NO = #{secondSerialNo,jdbcType=INTEGER},
+      REGIS_PUSH_POWER = #{regisPushPower,jdbcType=VARCHAR},
+      SMA_PROG_POWER = #{smaProgPower,jdbcType=VARCHAR},
+      VID_OPEN_POWER = #{vidOpenPower,jdbcType=VARCHAR},
+      SMA_PRO_VID_POWER = #{smaProVidPower,jdbcType=VARCHAR},
+      IS_SEND_APPRAISAL = #{isSendAppraisal,jdbcType=CHAR},
+      SHORT_NAME = #{shortName,jdbcType=VARCHAR},
+      TYPE_CODE = #{typeCode,jdbcType=VARCHAR},
+      PLATFORM_TYPE = #{platformType,jdbcType=CHAR},
+      IS_MEDIATION_JOINT_JUDGE = #{isMediationJointJudge,jdbcType=CHAR},
+      BUTTONS = #{buttons,jdbcType=VARCHAR},
+      IS_CELLPHONE_VALIDATE = #{isCellphoneValidate,jdbcType=CHAR},
+      IS_TEST = #{isTest,jdbcType=CHAR},
+      insurance_id = #{insuranceId,jdbcType=VARCHAR},
+      IS_LITIGATION_OR_APPROVE = #{isLitigationOrApprove,jdbcType=CHAR},
+      is_litigationPreservation = #{isLitigationpreservation,jdbcType=CHAR},
+      PERSON_NAME = #{personName,jdbcType=VARCHAR},
+      TELEPHONE = #{telephone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      supreme = #{supreme,jdbcType=CHAR},
+      BIG_ADJUST_ORG_ID = #{bigAdjustOrgId,jdbcType=VARCHAR},
+      VERSION = #{version,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

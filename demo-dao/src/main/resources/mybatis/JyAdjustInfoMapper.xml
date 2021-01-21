@@ -1,0 +1,1606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyAdjustInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyAdjustInfo">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+    <result column="REGULATION_NO" jdbcType="VARCHAR" property="regulationNo" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="DEL_FLAG" jdbcType="INTEGER" property="delFlag" />
+    <result column="LAW_MONEY" jdbcType="DOUBLE" property="lawMoney" />
+    <result column="LAW_ORG_ID" jdbcType="INTEGER" property="lawOrgId" />
+    <result column="LAW_ORG_NAME" jdbcType="VARCHAR" property="lawOrgName" />
+    <result column="ADJUST_ORG_CODE" jdbcType="INTEGER" property="adjustOrgCode" />
+    <result column="ADJUST_ORG_NAME" jdbcType="VARCHAR" property="adjustOrgName" />
+    <result column="ADJUST_POINT_CODE" jdbcType="VARCHAR" property="adjustPointCode" />
+    <result column="ADJUST_POINT_NAME" jdbcType="VARCHAR" property="adjustPointName" />
+    <result column="REASON" jdbcType="VARCHAR" property="reason" />
+    <result column="ADJUST_RESULT" jdbcType="VARCHAR" property="adjustResult" />
+    <result column="ADJUST_RESULT_REMARK" jdbcType="VARCHAR" property="adjustResultRemark" />
+    <result column="APPLICANT" jdbcType="VARCHAR" property="applicant" />
+    <result column="RESPONDENT" jdbcType="VARCHAR" property="respondent" />
+    <result column="FACT_REASON" jdbcType="VARCHAR" property="factReason" />
+    <result column="PAY_DATE" jdbcType="TIMESTAMP" property="payDate" />
+    <result column="ADJUST_DATE" jdbcType="TIMESTAMP" property="adjustDate" />
+    <result column="CREATE_BY" jdbcType="INTEGER" property="createBy" />
+    <result column="ADJUST_NAME" jdbcType="VARCHAR" property="adjustName" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="IS_RETURN" jdbcType="CHAR" property="isReturn" />
+    <result column="RECEIVE_DATE" jdbcType="TIMESTAMP" property="receiveDate" />
+    <result column="LAW_NO" jdbcType="VARCHAR" property="lawNo" />
+    <result column="FILING_DATE" jdbcType="TIMESTAMP" property="filingDate" />
+    <result column="FILING_NAME" jdbcType="VARCHAR" property="filingName" />
+    <result column="CHIEF_JUDGE_ID" jdbcType="INTEGER" property="chiefJudgeId" />
+    <result column="CLERK_ID" jdbcType="INTEGER" property="clerkId" />
+    <result column="COURT_ID" jdbcType="INTEGER" property="courtId" />
+    <result column="COURT_NUM" jdbcType="VARCHAR" property="courtNum" />
+    <result column="REGION_NAME" jdbcType="VARCHAR" property="regionName" />
+    <result column="STANDARD_YEAR" jdbcType="VARCHAR" property="standardYear" />
+    <result column="HOUSEHOLD" jdbcType="CHAR" property="household" />
+    <result column="DEATH_DATE" jdbcType="TIMESTAMP" property="deathDate" />
+    <result column="COMPENSATE_RATE" jdbcType="DOUBLE" property="compensateRate" />
+    <result column="COMPENSATE_STANDARD" jdbcType="VARCHAR" property="compensateStandard" />
+    <result column="APPLY_TOTAL" jdbcType="DOUBLE" property="applyTotal" />
+    <result column="PAID_TOTAL" jdbcType="DOUBLE" property="paidTotal" />
+    <result column="FEE_DETAIL" jdbcType="VARCHAR" property="feeDetail" />
+    <result column="COMPENSATE_TABLE" jdbcType="VARCHAR" property="compensateTable" />
+    <result column="REGION_CODE" jdbcType="VARCHAR" property="regionCode" />
+    <result column="CLAIM_STATE" jdbcType="VARCHAR" property="claimState" />
+    <result column="CLAIM_MESSAGE" jdbcType="VARCHAR" property="claimMessage" />
+    <result column="IS_TRANSFERED" jdbcType="VARCHAR" property="isTransfered" />
+    <result column="PAYEE_NAME" jdbcType="VARCHAR" property="payeeName" />
+    <result column="PAYEE_ACCOUNT" jdbcType="VARCHAR" property="payeeAccount" />
+    <result column="OPENING_BANK" jdbcType="VARCHAR" property="openingBank" />
+    <result column="JUDGE_CASE_ID" jdbcType="VARCHAR" property="judgeCaseId" />
+    <result column="DISABILITY_GRADE_ID" jdbcType="VARCHAR" property="disabilityGradeId" />
+    <result column="COURT_CODE" jdbcType="VARCHAR" property="courtCode" />
+    <result column="CHIEF_NAME" jdbcType="VARCHAR" property="chiefName" />
+    <result column="CLERK_NAME" jdbcType="VARCHAR" property="clerkName" />
+    <result column="COURT_NAME" jdbcType="VARCHAR" property="courtName" />
+    <result column="CONVERGE_UPDATE_DATE" jdbcType="TIMESTAMP" property="convergeUpdateDate" />
+    <result column="CONVERGE_DATE" jdbcType="TIMESTAMP" property="convergeDate" />
+    <result column="STEP" jdbcType="CHAR" property="step" />
+    <result column="ZZR_SJY" jdbcType="VARCHAR" property="zzrSjy" />
+    <result column="ZZR_CBR" jdbcType="VARCHAR" property="zzrCbr" />
+    <result column="AHDM" jdbcType="VARCHAR" property="ahdm" />
+    <result column="BEFORE_PERSONNEL_ID" jdbcType="INTEGER" property="beforePersonnelId" />
+    <result column="BEFORE_PERSONNEL_NAME" jdbcType="VARCHAR" property="beforePersonnelName" />
+    <result column="ADJUST_CITY_CODE" jdbcType="VARCHAR" property="adjustCityCode" />
+    <result column="ADJUST_CITY_NAME" jdbcType="VARCHAR" property="adjustCityName" />
+    <result column="ADJUST_TYPE" jdbcType="VARCHAR" property="adjustType" />
+    <result column="ADJUST_RETURN" jdbcType="VARCHAR" property="adjustReturn" />
+    <result column="ADJUST_RETURN_REMARK" jdbcType="VARCHAR" property="adjustReturnRemark" />
+    <result column="ADJUST_PERSON_ID" jdbcType="INTEGER" property="adjustPersonId" />
+    <result column="COURT_DATE" jdbcType="TIMESTAMP" property="courtDate" />
+    <result column="SYSTEMNO" jdbcType="VARCHAR" property="systemno" />
+    <result column="VINNO" jdbcType="VARCHAR" property="vinno" />
+    <result column="BEFORE_ADJUST_POINT_CODE" jdbcType="VARCHAR" property="beforeAdjustPointCode" />
+    <result column="BEFORE_ADJUST_POINT_NAME" jdbcType="VARCHAR" property="beforeAdjustPointName" />
+    <result column="ACQUIRE_MESSAGE_INFO" jdbcType="VARCHAR" property="acquireMessageInfo" />
+    <result column="MAO_FLAG" jdbcType="VARCHAR" property="maoFlag" />
+    <result column="RETURN_URL" jdbcType="VARCHAR" property="returnUrl" />
+    <result column="END_DATE" jdbcType="TIMESTAMP" property="endDate" />
+    <result column="MEDIATE_END" jdbcType="CHAR" property="mediateEnd" />
+    <result column="IS_SEND_APPRAISAL" jdbcType="CHAR" property="isSendAppraisal" />
+    <result column="IS_APPRAISAL_FINISH" jdbcType="CHAR" property="isAppraisalFinish" />
+    <result column="OLD_IS_SEND_APPRAISAL" jdbcType="CHAR" property="oldIsSendAppraisal" />
+    <result column="OLD_IS_APPRAISAL_FINISH" jdbcType="CHAR" property="oldIsAppraisalFinish" />
+    <result column="SACCIDENT_CODE" jdbcType="VARCHAR" property="saccidentCode" />
+    <result column="ADJUST_END_DATE" jdbcType="TIMESTAMP" property="adjustEndDate" />
+    <result column="EXPLAIN_CONTENT" jdbcType="VARCHAR" property="explainContent" />
+    <result column="CAUSES" jdbcType="VARCHAR" property="causes" />
+    <result column="CASE_END_DATE" jdbcType="TIMESTAMP" property="caseEndDate" />
+    <result column="LITIGATION_FLAG" jdbcType="VARCHAR" property="litigationFlag" />
+    <result column="PLAT_FORM" jdbcType="VARCHAR" property="platForm" />
+    <result column="DZAH" jdbcType="VARCHAR" property="dzah" />
+    <result column="ajbs" jdbcType="VARCHAR" property="ajbs" />
+    <result column="accident_date" jdbcType="TIMESTAMP" property="accidentDate" />
+    <result column="ACCIDENT_TYPE" jdbcType="VARCHAR" property="accidentType" />
+    <result column="RESPONSIBILITY" jdbcType="VARCHAR" property="responsibility" />
+    <result column="SUFFER_NATURE" jdbcType="VARCHAR" property="sufferNature" />
+    <result column="BIG_ADJUST_ID" jdbcType="VARCHAR" property="bigAdjustId" />
+    <result column="CASE_POOL_MODE" jdbcType="VARCHAR" property="casePoolMode" />
+    <result column="LITIGATION_REQUEST" jdbcType="VARCHAR" property="litigationRequest" />
+    <result column="PLATFORM_ORIGIN" jdbcType="VARCHAR" property="platformOrigin" />
+    <result column="TARGET_MONEY" jdbcType="DOUBLE" property="targetMoney" />
+    <result column="UPDATE_DATE" jdbcType="TIMESTAMP" property="updateDate" />
+    <result column="SIGN_CODE" jdbcType="VARCHAR" property="signCode" />
+    <result column="BEFORE_ADJUST_ORG_CODE" jdbcType="INTEGER" property="beforeAdjustOrgCode" />
+    <result column="BEFORE_ADJUST_ORG_NAME" jdbcType="VARCHAR" property="beforeAdjustOrgName" />
+    <result column="IS_TEST" jdbcType="CHAR" property="isTest" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, SERIAL_NO, REGULATION_NO, STATE, DEL_FLAG, LAW_MONEY, LAW_ORG_ID, LAW_ORG_NAME, 
+    ADJUST_ORG_CODE, ADJUST_ORG_NAME, ADJUST_POINT_CODE, ADJUST_POINT_NAME, REASON, ADJUST_RESULT, 
+    ADJUST_RESULT_REMARK, APPLICANT, RESPONDENT, FACT_REASON, PAY_DATE, ADJUST_DATE, 
+    CREATE_BY, ADJUST_NAME, CREATE_DATE, IS_RETURN, RECEIVE_DATE, LAW_NO, FILING_DATE, 
+    FILING_NAME, CHIEF_JUDGE_ID, CLERK_ID, COURT_ID, COURT_NUM, REGION_NAME, STANDARD_YEAR, 
+    HOUSEHOLD, DEATH_DATE, COMPENSATE_RATE, COMPENSATE_STANDARD, APPLY_TOTAL, PAID_TOTAL, 
+    FEE_DETAIL, COMPENSATE_TABLE, REGION_CODE, CLAIM_STATE, CLAIM_MESSAGE, IS_TRANSFERED, 
+    PAYEE_NAME, PAYEE_ACCOUNT, OPENING_BANK, JUDGE_CASE_ID, DISABILITY_GRADE_ID, COURT_CODE, 
+    CHIEF_NAME, CLERK_NAME, COURT_NAME, CONVERGE_UPDATE_DATE, CONVERGE_DATE, STEP, ZZR_SJY, 
+    ZZR_CBR, AHDM, BEFORE_PERSONNEL_ID, BEFORE_PERSONNEL_NAME, ADJUST_CITY_CODE, ADJUST_CITY_NAME, 
+    ADJUST_TYPE, ADJUST_RETURN, ADJUST_RETURN_REMARK, ADJUST_PERSON_ID, COURT_DATE, SYSTEMNO, 
+    VINNO, BEFORE_ADJUST_POINT_CODE, BEFORE_ADJUST_POINT_NAME, ACQUIRE_MESSAGE_INFO, 
+    MAO_FLAG, RETURN_URL, END_DATE, MEDIATE_END, IS_SEND_APPRAISAL, IS_APPRAISAL_FINISH, 
+    OLD_IS_SEND_APPRAISAL, OLD_IS_APPRAISAL_FINISH, SACCIDENT_CODE, ADJUST_END_DATE, 
+    EXPLAIN_CONTENT, CAUSES, CASE_END_DATE, LITIGATION_FLAG, PLAT_FORM, DZAH, ajbs, accident_date, 
+    ACCIDENT_TYPE, RESPONSIBILITY, SUFFER_NATURE, BIG_ADJUST_ID, CASE_POOL_MODE, LITIGATION_REQUEST, 
+    PLATFORM_ORIGIN, TARGET_MONEY, UPDATE_DATE, SIGN_CODE, BEFORE_ADJUST_ORG_CODE, BEFORE_ADJUST_ORG_NAME, 
+    IS_TEST
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from jy_adjust_info
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByJyAdjustInfo" parameterType="com.ml.po.JyAdjustInfo" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from jy_adjust_info where DEL_FLAG = '0'
+    <if test="serialNo != null">
+        AND SERIAL_NO = #{serialNo,jdbcType=VARCHAR}
+    </if>
+    <if test="regulationNo != null">
+        AND REGULATION_NO = #{regulationNo,jdbcType=VARCHAR}
+    </if>
+    <if test="state != null">
+        AND STATE = #{state,jdbcType=VARCHAR}
+    </if>
+    <if test="lawMoney != null">
+        AND LAW_MONEY = #{lawMoney,jdbcType=DOUBLE}
+    </if>
+    <if test="lawOrgId != null">
+        AND LAW_ORG_ID = #{lawOrgId,jdbcType=INTEGER}
+    </if>
+    <if test="lawOrgName != null">
+        AND LAW_ORG_NAME = #{lawOrgName,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustOrgCode != null">
+        AND ADJUST_ORG_CODE = #{adjustOrgCode,jdbcType=INTEGER}
+    </if>
+    <if test="adjustOrgName != null">
+        AND ADJUST_ORG_NAME = #{adjustOrgName,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustPointCode != null">
+        AND ADJUST_POINT_CODE = #{adjustPointCode,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustPointName != null">
+        AND ADJUST_POINT_NAME = #{adjustPointName,jdbcType=VARCHAR}
+    </if>
+    <if test="reason != null">
+        AND REASON = #{reason,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustResult != null">
+        AND ADJUST_RESULT = #{adjustResult,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustResultRemark != null">
+        AND ADJUST_RESULT_REMARK = #{adjustResultRemark,jdbcType=VARCHAR}
+    </if>
+    <if test="applicant != null">
+        AND APPLICANT = #{applicant,jdbcType=VARCHAR}
+    </if>
+    <if test="respondent != null">
+        AND RESPONDENT = #{respondent,jdbcType=VARCHAR}
+    </if>
+    <if test="factReason != null">
+        AND FACT_REASON = #{factReason,jdbcType=VARCHAR}
+    </if>
+    <if test="payDate != null">
+        AND PAY_DATE = #{payDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="adjustDate != null">
+        AND ADJUST_DATE = #{adjustDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createBy != null">
+        AND CREATE_BY = #{createBy,jdbcType=INTEGER}
+    </if>
+    <if test="adjustName != null">
+        AND ADJUST_NAME = #{adjustName,jdbcType=VARCHAR}
+    </if>
+    <if test="createDate != null">
+        AND CREATE_DATE = #{createDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="isReturn != null">
+        AND IS_RETURN = #{isReturn,jdbcType=CHAR}
+    </if>
+    <if test="receiveDate != null">
+        AND RECEIVE_DATE = #{receiveDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="lawNo != null">
+        AND LAW_NO = #{lawNo,jdbcType=VARCHAR}
+    </if>
+    <if test="filingDate != null">
+        AND FILING_DATE = #{filingDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="filingName != null">
+        AND FILING_NAME = #{filingName,jdbcType=VARCHAR}
+    </if>
+    <if test="chiefJudgeId != null">
+        AND CHIEF_JUDGE_ID = #{chiefJudgeId,jdbcType=INTEGER}
+    </if>
+    <if test="clerkId != null">
+        AND CLERK_ID = #{clerkId,jdbcType=INTEGER}
+    </if>
+    <if test="courtId != null">
+        AND COURT_ID = #{courtId,jdbcType=INTEGER}
+    </if>
+    <if test="courtNum != null">
+        AND COURT_NUM = #{courtNum,jdbcType=VARCHAR}
+    </if>
+    <if test="regionName != null">
+        AND REGION_NAME = #{regionName,jdbcType=VARCHAR}
+    </if>
+    <if test="standardYear != null">
+        AND STANDARD_YEAR = #{standardYear,jdbcType=VARCHAR}
+    </if>
+    <if test="household != null">
+        AND HOUSEHOLD = #{household,jdbcType=CHAR}
+    </if>
+    <if test="deathDate != null">
+        AND DEATH_DATE = #{deathDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="compensateRate != null">
+        AND COMPENSATE_RATE = #{compensateRate,jdbcType=DOUBLE}
+    </if>
+    <if test="compensateStandard != null">
+        AND COMPENSATE_STANDARD = #{compensateStandard,jdbcType=VARCHAR}
+    </if>
+    <if test="applyTotal != null">
+        AND APPLY_TOTAL = #{applyTotal,jdbcType=DOUBLE}
+    </if>
+    <if test="paidTotal != null">
+        AND PAID_TOTAL = #{paidTotal,jdbcType=DOUBLE}
+    </if>
+    <if test="feeDetail != null">
+        AND FEE_DETAIL = #{feeDetail,jdbcType=VARCHAR}
+    </if>
+    <if test="compensateTable != null">
+        AND COMPENSATE_TABLE = #{compensateTable,jdbcType=VARCHAR}
+    </if>
+    <if test="regionCode != null">
+        AND REGION_CODE = #{regionCode,jdbcType=VARCHAR}
+    </if>
+    <if test="claimState != null">
+        AND CLAIM_STATE = #{claimState,jdbcType=VARCHAR}
+    </if>
+    <if test="claimMessage != null">
+        AND CLAIM_MESSAGE = #{claimMessage,jdbcType=VARCHAR}
+    </if>
+    <if test="isTransfered != null">
+        AND IS_TRANSFERED = #{isTransfered,jdbcType=VARCHAR}
+    </if>
+    <if test="payeeName != null">
+        AND PAYEE_NAME = #{payeeName,jdbcType=VARCHAR}
+    </if>
+    <if test="payeeAccount != null">
+        AND PAYEE_ACCOUNT = #{payeeAccount,jdbcType=VARCHAR}
+    </if>
+    <if test="openingBank != null">
+        AND OPENING_BANK = #{openingBank,jdbcType=VARCHAR}
+    </if>
+    <if test="judgeCaseId != null">
+        AND JUDGE_CASE_ID = #{judgeCaseId,jdbcType=VARCHAR}
+    </if>
+    <if test="disabilityGradeId != null">
+        AND DISABILITY_GRADE_ID = #{disabilityGradeId,jdbcType=VARCHAR}
+    </if>
+    <if test="courtCode != null">
+        AND COURT_CODE = #{courtCode,jdbcType=VARCHAR}
+    </if>
+    <if test="chiefName != null">
+        AND CHIEF_NAME = #{chiefName,jdbcType=VARCHAR}
+    </if>
+    <if test="clerkName != null">
+        AND CLERK_NAME = #{clerkName,jdbcType=VARCHAR}
+    </if>
+    <if test="courtName != null">
+        AND COURT_NAME = #{courtName,jdbcType=VARCHAR}
+    </if>
+    <if test="convergeUpdateDate != null">
+        AND CONVERGE_UPDATE_DATE = #{convergeUpdateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="convergeDate != null">
+        AND CONVERGE_DATE = #{convergeDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="step != null">
+        AND STEP = #{step,jdbcType=CHAR}
+    </if>
+    <if test="zzrSjy != null">
+        AND ZZR_SJY = #{zzrSjy,jdbcType=VARCHAR}
+    </if>
+    <if test="zzrCbr != null">
+        AND ZZR_CBR = #{zzrCbr,jdbcType=VARCHAR}
+    </if>
+    <if test="ahdm != null">
+        AND AHDM = #{ahdm,jdbcType=VARCHAR}
+    </if>
+    <if test="beforePersonnelId != null">
+        AND BEFORE_PERSONNEL_ID = #{beforePersonnelId,jdbcType=INTEGER}
+    </if>
+    <if test="beforePersonnelName != null">
+        AND BEFORE_PERSONNEL_NAME = #{beforePersonnelName,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustCityCode != null">
+        AND ADJUST_CITY_CODE = #{adjustCityCode,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustCityName != null">
+        AND ADJUST_CITY_NAME = #{adjustCityName,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustType != null">
+        AND ADJUST_TYPE = #{adjustType,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustReturn != null">
+        AND ADJUST_RETURN = #{adjustReturn,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustReturnRemark != null">
+        AND ADJUST_RETURN_REMARK = #{adjustReturnRemark,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustPersonId != null">
+        AND ADJUST_PERSON_ID = #{adjustPersonId,jdbcType=INTEGER}
+    </if>
+    <if test="courtDate != null">
+        AND COURT_DATE = #{courtDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="systemno != null">
+        AND SYSTEMNO = #{systemno,jdbcType=VARCHAR}
+    </if>
+    <if test="vinno != null">
+        AND VINNO = #{vinno,jdbcType=VARCHAR}
+    </if>
+    <if test="beforeAdjustPointCode != null">
+        AND BEFORE_ADJUST_POINT_CODE = #{beforeAdjustPointCode,jdbcType=VARCHAR}
+    </if>
+    <if test="beforeAdjustPointName != null">
+        AND BEFORE_ADJUST_POINT_NAME = #{beforeAdjustPointName,jdbcType=VARCHAR}
+    </if>
+    <if test="acquireMessageInfo != null">
+        AND ACQUIRE_MESSAGE_INFO = #{acquireMessageInfo,jdbcType=VARCHAR}
+    </if>
+    <if test="maoFlag != null">
+        AND MAO_FLAG = #{maoFlag,jdbcType=VARCHAR}
+    </if>
+    <if test="returnUrl != null">
+        AND RETURN_URL = #{returnUrl,jdbcType=VARCHAR}
+    </if>
+    <if test="endDate != null">
+        AND END_DATE = #{endDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="mediateEnd != null">
+        AND MEDIATE_END = #{mediateEnd,jdbcType=CHAR}
+    </if>
+    <if test="isSendAppraisal != null">
+        AND IS_SEND_APPRAISAL = #{isSendAppraisal,jdbcType=CHAR}
+    </if>
+    <if test="isAppraisalFinish != null">
+        AND IS_APPRAISAL_FINISH = #{isAppraisalFinish,jdbcType=CHAR}
+    </if>
+    <if test="oldIsSendAppraisal != null">
+        AND OLD_IS_SEND_APPRAISAL = #{oldIsSendAppraisal,jdbcType=CHAR}
+    </if>
+    <if test="oldIsAppraisalFinish != null">
+        AND OLD_IS_APPRAISAL_FINISH = #{oldIsAppraisalFinish,jdbcType=CHAR}
+    </if>
+    <if test="saccidentCode != null">
+        AND SACCIDENT_CODE = #{saccidentCode,jdbcType=VARCHAR}
+    </if>
+    <if test="adjustEndDate != null">
+        AND ADJUST_END_DATE = #{adjustEndDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="explainContent != null">
+        AND EXPLAIN_CONTENT = #{explainContent,jdbcType=VARCHAR}
+    </if>
+    <if test="causes != null">
+        AND CAUSES = #{causes,jdbcType=VARCHAR}
+    </if>
+    <if test="caseEndDate != null">
+        AND CASE_END_DATE = #{caseEndDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="litigationFlag != null">
+        AND LITIGATION_FLAG = #{litigationFlag,jdbcType=VARCHAR}
+    </if>
+    <if test="platForm != null">
+        AND PLAT_FORM = #{platForm,jdbcType=VARCHAR}
+    </if>
+    <if test="dzah != null">
+        AND DZAH = #{dzah,jdbcType=VARCHAR}
+    </if>
+    <if test="ajbs != null">
+        AND ajbs = #{ajbs,jdbcType=VARCHAR}
+    </if>
+    <if test="accidentDate != null">
+        AND accident_date = #{accidentDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="accidentType != null">
+        AND ACCIDENT_TYPE = #{accidentType,jdbcType=VARCHAR}
+    </if>
+    <if test="responsibility != null">
+        AND RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR}
+    </if>
+    <if test="sufferNature != null">
+        AND SUFFER_NATURE = #{sufferNature,jdbcType=VARCHAR}
+    </if>
+    <if test="bigAdjustId != null">
+        AND BIG_ADJUST_ID = #{bigAdjustId,jdbcType=VARCHAR}
+    </if>
+    <if test="casePoolMode != null">
+        AND CASE_POOL_MODE = #{casePoolMode,jdbcType=VARCHAR}
+    </if>
+    <if test="litigationRequest != null">
+        AND LITIGATION_REQUEST = #{litigationRequest,jdbcType=VARCHAR}
+    </if>
+    <if test="platformOrigin != null">
+        AND PLATFORM_ORIGIN = #{platformOrigin,jdbcType=VARCHAR}
+    </if>
+    <if test="targetMoney != null">
+        AND TARGET_MONEY = #{targetMoney,jdbcType=DOUBLE}
+    </if>
+    <if test="updateDate != null">
+        AND UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP}
+    </if>
+    <if test="signCode != null">
+        AND SIGN_CODE = #{signCode,jdbcType=VARCHAR}
+    </if>
+    <if test="beforeAdjustOrgCode != null">
+        AND BEFORE_ADJUST_ORG_CODE = #{beforeAdjustOrgCode,jdbcType=INTEGER}
+    </if>
+    <if test="beforeAdjustOrgName != null">
+        AND BEFORE_ADJUST_ORG_NAME = #{beforeAdjustOrgName,jdbcType=VARCHAR}
+    </if>
+    <if test="isTest != null">
+        AND IS_TEST = #{isTest,jdbcType=CHAR}
+    </if>
+    limit 1
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_adjust_info
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyAdjustInfo">
+    insert into jy_adjust_info (ID, SERIAL_NO, REGULATION_NO, 
+      STATE, DEL_FLAG, LAW_MONEY, 
+      LAW_ORG_ID, LAW_ORG_NAME, ADJUST_ORG_CODE, 
+      ADJUST_ORG_NAME, ADJUST_POINT_CODE, ADJUST_POINT_NAME, 
+      REASON, ADJUST_RESULT, ADJUST_RESULT_REMARK, 
+      APPLICANT, RESPONDENT, FACT_REASON, 
+      PAY_DATE, ADJUST_DATE, CREATE_BY, 
+      ADJUST_NAME, CREATE_DATE, IS_RETURN, 
+      RECEIVE_DATE, LAW_NO, FILING_DATE, 
+      FILING_NAME, CHIEF_JUDGE_ID, CLERK_ID, 
+      COURT_ID, COURT_NUM, REGION_NAME, 
+      STANDARD_YEAR, HOUSEHOLD, DEATH_DATE, 
+      COMPENSATE_RATE, COMPENSATE_STANDARD, APPLY_TOTAL, 
+      PAID_TOTAL, FEE_DETAIL, COMPENSATE_TABLE, 
+      REGION_CODE, CLAIM_STATE, CLAIM_MESSAGE, 
+      IS_TRANSFERED, PAYEE_NAME, PAYEE_ACCOUNT, 
+      OPENING_BANK, JUDGE_CASE_ID, DISABILITY_GRADE_ID, 
+      COURT_CODE, CHIEF_NAME, CLERK_NAME, 
+      COURT_NAME, CONVERGE_UPDATE_DATE, CONVERGE_DATE, 
+      STEP, ZZR_SJY, ZZR_CBR, 
+      AHDM, BEFORE_PERSONNEL_ID, BEFORE_PERSONNEL_NAME, 
+      ADJUST_CITY_CODE, ADJUST_CITY_NAME, ADJUST_TYPE, 
+      ADJUST_RETURN, ADJUST_RETURN_REMARK, ADJUST_PERSON_ID, 
+      COURT_DATE, SYSTEMNO, VINNO, 
+      BEFORE_ADJUST_POINT_CODE, BEFORE_ADJUST_POINT_NAME, 
+      ACQUIRE_MESSAGE_INFO, MAO_FLAG, RETURN_URL, 
+      END_DATE, MEDIATE_END, IS_SEND_APPRAISAL, 
+      IS_APPRAISAL_FINISH, OLD_IS_SEND_APPRAISAL, OLD_IS_APPRAISAL_FINISH, 
+      SACCIDENT_CODE, ADJUST_END_DATE, EXPLAIN_CONTENT, 
+      CAUSES, CASE_END_DATE, LITIGATION_FLAG, 
+      PLAT_FORM, DZAH, ajbs, 
+      accident_date, ACCIDENT_TYPE, RESPONSIBILITY, 
+      SUFFER_NATURE, BIG_ADJUST_ID, CASE_POOL_MODE, 
+      LITIGATION_REQUEST, PLATFORM_ORIGIN, TARGET_MONEY, 
+      UPDATE_DATE, SIGN_CODE, BEFORE_ADJUST_ORG_CODE, 
+      BEFORE_ADJUST_ORG_NAME, IS_TEST)
+    values (#{id,jdbcType=INTEGER}, #{serialNo,jdbcType=VARCHAR}, #{regulationNo,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER}, #{lawMoney,jdbcType=DOUBLE}, 
+      #{lawOrgId,jdbcType=INTEGER}, #{lawOrgName,jdbcType=VARCHAR}, #{adjustOrgCode,jdbcType=INTEGER}, 
+      #{adjustOrgName,jdbcType=VARCHAR}, #{adjustPointCode,jdbcType=VARCHAR}, #{adjustPointName,jdbcType=VARCHAR}, 
+      #{reason,jdbcType=VARCHAR}, #{adjustResult,jdbcType=VARCHAR}, #{adjustResultRemark,jdbcType=VARCHAR}, 
+      #{applicant,jdbcType=VARCHAR}, #{respondent,jdbcType=VARCHAR}, #{factReason,jdbcType=VARCHAR}, 
+      #{payDate,jdbcType=TIMESTAMP}, #{adjustDate,jdbcType=TIMESTAMP}, #{createBy,jdbcType=INTEGER}, 
+      #{adjustName,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{isReturn,jdbcType=CHAR}, 
+      #{receiveDate,jdbcType=TIMESTAMP}, #{lawNo,jdbcType=VARCHAR}, #{filingDate,jdbcType=TIMESTAMP}, 
+      #{filingName,jdbcType=VARCHAR}, #{chiefJudgeId,jdbcType=INTEGER}, #{clerkId,jdbcType=INTEGER}, 
+      #{courtId,jdbcType=INTEGER}, #{courtNum,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, 
+      #{standardYear,jdbcType=VARCHAR}, #{household,jdbcType=CHAR}, #{deathDate,jdbcType=TIMESTAMP}, 
+      #{compensateRate,jdbcType=DOUBLE}, #{compensateStandard,jdbcType=VARCHAR}, #{applyTotal,jdbcType=DOUBLE}, 
+      #{paidTotal,jdbcType=DOUBLE}, #{feeDetail,jdbcType=VARCHAR}, #{compensateTable,jdbcType=VARCHAR}, 
+      #{regionCode,jdbcType=VARCHAR}, #{claimState,jdbcType=VARCHAR}, #{claimMessage,jdbcType=VARCHAR}, 
+      #{isTransfered,jdbcType=VARCHAR}, #{payeeName,jdbcType=VARCHAR}, #{payeeAccount,jdbcType=VARCHAR}, 
+      #{openingBank,jdbcType=VARCHAR}, #{judgeCaseId,jdbcType=VARCHAR}, #{disabilityGradeId,jdbcType=VARCHAR}, 
+      #{courtCode,jdbcType=VARCHAR}, #{chiefName,jdbcType=VARCHAR}, #{clerkName,jdbcType=VARCHAR}, 
+      #{courtName,jdbcType=VARCHAR}, #{convergeUpdateDate,jdbcType=TIMESTAMP}, #{convergeDate,jdbcType=TIMESTAMP}, 
+      #{step,jdbcType=CHAR}, #{zzrSjy,jdbcType=VARCHAR}, #{zzrCbr,jdbcType=VARCHAR}, 
+      #{ahdm,jdbcType=VARCHAR}, #{beforePersonnelId,jdbcType=INTEGER}, #{beforePersonnelName,jdbcType=VARCHAR}, 
+      #{adjustCityCode,jdbcType=VARCHAR}, #{adjustCityName,jdbcType=VARCHAR}, #{adjustType,jdbcType=VARCHAR}, 
+      #{adjustReturn,jdbcType=VARCHAR}, #{adjustReturnRemark,jdbcType=VARCHAR}, #{adjustPersonId,jdbcType=INTEGER}, 
+      #{courtDate,jdbcType=TIMESTAMP}, #{systemno,jdbcType=VARCHAR}, #{vinno,jdbcType=VARCHAR}, 
+      #{beforeAdjustPointCode,jdbcType=VARCHAR}, #{beforeAdjustPointName,jdbcType=VARCHAR}, 
+      #{acquireMessageInfo,jdbcType=VARCHAR}, #{maoFlag,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, 
+      #{endDate,jdbcType=TIMESTAMP}, #{mediateEnd,jdbcType=CHAR}, #{isSendAppraisal,jdbcType=CHAR}, 
+      #{isAppraisalFinish,jdbcType=CHAR}, #{oldIsSendAppraisal,jdbcType=CHAR}, #{oldIsAppraisalFinish,jdbcType=CHAR}, 
+      #{saccidentCode,jdbcType=VARCHAR}, #{adjustEndDate,jdbcType=TIMESTAMP}, #{explainContent,jdbcType=VARCHAR}, 
+      #{causes,jdbcType=VARCHAR}, #{caseEndDate,jdbcType=TIMESTAMP}, #{litigationFlag,jdbcType=VARCHAR}, 
+      #{platForm,jdbcType=VARCHAR}, #{dzah,jdbcType=VARCHAR}, #{ajbs,jdbcType=VARCHAR}, 
+      #{accidentDate,jdbcType=TIMESTAMP}, #{accidentType,jdbcType=VARCHAR}, #{responsibility,jdbcType=VARCHAR}, 
+      #{sufferNature,jdbcType=VARCHAR}, #{bigAdjustId,jdbcType=VARCHAR}, #{casePoolMode,jdbcType=VARCHAR}, 
+      #{litigationRequest,jdbcType=VARCHAR}, #{platformOrigin,jdbcType=VARCHAR}, #{targetMoney,jdbcType=DOUBLE}, 
+      #{updateDate,jdbcType=TIMESTAMP}, #{signCode,jdbcType=VARCHAR}, #{beforeAdjustOrgCode,jdbcType=INTEGER}, 
+      #{beforeAdjustOrgName,jdbcType=VARCHAR}, #{isTest,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyAdjustInfo">
+    insert into jy_adjust_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="regulationNo != null">
+        REGULATION_NO,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+      <if test="lawMoney != null">
+        LAW_MONEY,
+      </if>
+      <if test="lawOrgId != null">
+        LAW_ORG_ID,
+      </if>
+      <if test="lawOrgName != null">
+        LAW_ORG_NAME,
+      </if>
+      <if test="adjustOrgCode != null">
+        ADJUST_ORG_CODE,
+      </if>
+      <if test="adjustOrgName != null">
+        ADJUST_ORG_NAME,
+      </if>
+      <if test="adjustPointCode != null">
+        ADJUST_POINT_CODE,
+      </if>
+      <if test="adjustPointName != null">
+        ADJUST_POINT_NAME,
+      </if>
+      <if test="reason != null">
+        REASON,
+      </if>
+      <if test="adjustResult != null">
+        ADJUST_RESULT,
+      </if>
+      <if test="adjustResultRemark != null">
+        ADJUST_RESULT_REMARK,
+      </if>
+      <if test="applicant != null">
+        APPLICANT,
+      </if>
+      <if test="respondent != null">
+        RESPONDENT,
+      </if>
+      <if test="factReason != null">
+        FACT_REASON,
+      </if>
+      <if test="payDate != null">
+        PAY_DATE,
+      </if>
+      <if test="adjustDate != null">
+        ADJUST_DATE,
+      </if>
+      <if test="createBy != null">
+        CREATE_BY,
+      </if>
+      <if test="adjustName != null">
+        ADJUST_NAME,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="isReturn != null">
+        IS_RETURN,
+      </if>
+      <if test="receiveDate != null">
+        RECEIVE_DATE,
+      </if>
+      <if test="lawNo != null">
+        LAW_NO,
+      </if>
+      <if test="filingDate != null">
+        FILING_DATE,
+      </if>
+      <if test="filingName != null">
+        FILING_NAME,
+      </if>
+      <if test="chiefJudgeId != null">
+        CHIEF_JUDGE_ID,
+      </if>
+      <if test="clerkId != null">
+        CLERK_ID,
+      </if>
+      <if test="courtId != null">
+        COURT_ID,
+      </if>
+      <if test="courtNum != null">
+        COURT_NUM,
+      </if>
+      <if test="regionName != null">
+        REGION_NAME,
+      </if>
+      <if test="standardYear != null">
+        STANDARD_YEAR,
+      </if>
+      <if test="household != null">
+        HOUSEHOLD,
+      </if>
+      <if test="deathDate != null">
+        DEATH_DATE,
+      </if>
+      <if test="compensateRate != null">
+        COMPENSATE_RATE,
+      </if>
+      <if test="compensateStandard != null">
+        COMPENSATE_STANDARD,
+      </if>
+      <if test="applyTotal != null">
+        APPLY_TOTAL,
+      </if>
+      <if test="paidTotal != null">
+        PAID_TOTAL,
+      </if>
+      <if test="feeDetail != null">
+        FEE_DETAIL,
+      </if>
+      <if test="compensateTable != null">
+        COMPENSATE_TABLE,
+      </if>
+      <if test="regionCode != null">
+        REGION_CODE,
+      </if>
+      <if test="claimState != null">
+        CLAIM_STATE,
+      </if>
+      <if test="claimMessage != null">
+        CLAIM_MESSAGE,
+      </if>
+      <if test="isTransfered != null">
+        IS_TRANSFERED,
+      </if>
+      <if test="payeeName != null">
+        PAYEE_NAME,
+      </if>
+      <if test="payeeAccount != null">
+        PAYEE_ACCOUNT,
+      </if>
+      <if test="openingBank != null">
+        OPENING_BANK,
+      </if>
+      <if test="judgeCaseId != null">
+        JUDGE_CASE_ID,
+      </if>
+      <if test="disabilityGradeId != null">
+        DISABILITY_GRADE_ID,
+      </if>
+      <if test="courtCode != null">
+        COURT_CODE,
+      </if>
+      <if test="chiefName != null">
+        CHIEF_NAME,
+      </if>
+      <if test="clerkName != null">
+        CLERK_NAME,
+      </if>
+      <if test="courtName != null">
+        COURT_NAME,
+      </if>
+      <if test="convergeUpdateDate != null">
+        CONVERGE_UPDATE_DATE,
+      </if>
+      <if test="convergeDate != null">
+        CONVERGE_DATE,
+      </if>
+      <if test="step != null">
+        STEP,
+      </if>
+      <if test="zzrSjy != null">
+        ZZR_SJY,
+      </if>
+      <if test="zzrCbr != null">
+        ZZR_CBR,
+      </if>
+      <if test="ahdm != null">
+        AHDM,
+      </if>
+      <if test="beforePersonnelId != null">
+        BEFORE_PERSONNEL_ID,
+      </if>
+      <if test="beforePersonnelName != null">
+        BEFORE_PERSONNEL_NAME,
+      </if>
+      <if test="adjustCityCode != null">
+        ADJUST_CITY_CODE,
+      </if>
+      <if test="adjustCityName != null">
+        ADJUST_CITY_NAME,
+      </if>
+      <if test="adjustType != null">
+        ADJUST_TYPE,
+      </if>
+      <if test="adjustReturn != null">
+        ADJUST_RETURN,
+      </if>
+      <if test="adjustReturnRemark != null">
+        ADJUST_RETURN_REMARK,
+      </if>
+      <if test="adjustPersonId != null">
+        ADJUST_PERSON_ID,
+      </if>
+      <if test="courtDate != null">
+        COURT_DATE,
+      </if>
+      <if test="systemno != null">
+        SYSTEMNO,
+      </if>
+      <if test="vinno != null">
+        VINNO,
+      </if>
+      <if test="beforeAdjustPointCode != null">
+        BEFORE_ADJUST_POINT_CODE,
+      </if>
+      <if test="beforeAdjustPointName != null">
+        BEFORE_ADJUST_POINT_NAME,
+      </if>
+      <if test="acquireMessageInfo != null">
+        ACQUIRE_MESSAGE_INFO,
+      </if>
+      <if test="maoFlag != null">
+        MAO_FLAG,
+      </if>
+      <if test="returnUrl != null">
+        RETURN_URL,
+      </if>
+      <if test="endDate != null">
+        END_DATE,
+      </if>
+      <if test="mediateEnd != null">
+        MEDIATE_END,
+      </if>
+      <if test="isSendAppraisal != null">
+        IS_SEND_APPRAISAL,
+      </if>
+      <if test="isAppraisalFinish != null">
+        IS_APPRAISAL_FINISH,
+      </if>
+      <if test="oldIsSendAppraisal != null">
+        OLD_IS_SEND_APPRAISAL,
+      </if>
+      <if test="oldIsAppraisalFinish != null">
+        OLD_IS_APPRAISAL_FINISH,
+      </if>
+      <if test="saccidentCode != null">
+        SACCIDENT_CODE,
+      </if>
+      <if test="adjustEndDate != null">
+        ADJUST_END_DATE,
+      </if>
+      <if test="explainContent != null">
+        EXPLAIN_CONTENT,
+      </if>
+      <if test="causes != null">
+        CAUSES,
+      </if>
+      <if test="caseEndDate != null">
+        CASE_END_DATE,
+      </if>
+      <if test="litigationFlag != null">
+        LITIGATION_FLAG,
+      </if>
+      <if test="platForm != null">
+        PLAT_FORM,
+      </if>
+      <if test="dzah != null">
+        DZAH,
+      </if>
+      <if test="ajbs != null">
+        ajbs,
+      </if>
+      <if test="accidentDate != null">
+        accident_date,
+      </if>
+      <if test="accidentType != null">
+        ACCIDENT_TYPE,
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY,
+      </if>
+      <if test="sufferNature != null">
+        SUFFER_NATURE,
+      </if>
+      <if test="bigAdjustId != null">
+        BIG_ADJUST_ID,
+      </if>
+      <if test="casePoolMode != null">
+        CASE_POOL_MODE,
+      </if>
+      <if test="litigationRequest != null">
+        LITIGATION_REQUEST,
+      </if>
+      <if test="platformOrigin != null">
+        PLATFORM_ORIGIN,
+      </if>
+      <if test="targetMoney != null">
+        TARGET_MONEY,
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE,
+      </if>
+      <if test="signCode != null">
+        SIGN_CODE,
+      </if>
+      <if test="beforeAdjustOrgCode != null">
+        BEFORE_ADJUST_ORG_CODE,
+      </if>
+      <if test="beforeAdjustOrgName != null">
+        BEFORE_ADJUST_ORG_NAME,
+      </if>
+      <if test="isTest != null">
+        IS_TEST,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regulationNo != null">
+        #{regulationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="lawMoney != null">
+        #{lawMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lawOrgId != null">
+        #{lawOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="lawOrgName != null">
+        #{lawOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustOrgCode != null">
+        #{adjustOrgCode,jdbcType=INTEGER},
+      </if>
+      <if test="adjustOrgName != null">
+        #{adjustOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPointCode != null">
+        #{adjustPointCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPointName != null">
+        #{adjustPointName,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustResult != null">
+        #{adjustResult,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustResultRemark != null">
+        #{adjustResultRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="respondent != null">
+        #{respondent,jdbcType=VARCHAR},
+      </if>
+      <if test="factReason != null">
+        #{factReason,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustDate != null">
+        #{adjustDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="adjustName != null">
+        #{adjustName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isReturn != null">
+        #{isReturn,jdbcType=CHAR},
+      </if>
+      <if test="receiveDate != null">
+        #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lawNo != null">
+        #{lawNo,jdbcType=VARCHAR},
+      </if>
+      <if test="filingDate != null">
+        #{filingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filingName != null">
+        #{filingName,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefJudgeId != null">
+        #{chiefJudgeId,jdbcType=INTEGER},
+      </if>
+      <if test="clerkId != null">
+        #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="courtNum != null">
+        #{courtNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardYear != null">
+        #{standardYear,jdbcType=VARCHAR},
+      </if>
+      <if test="household != null">
+        #{household,jdbcType=CHAR},
+      </if>
+      <if test="deathDate != null">
+        #{deathDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="compensateRate != null">
+        #{compensateRate,jdbcType=DOUBLE},
+      </if>
+      <if test="compensateStandard != null">
+        #{compensateStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTotal != null">
+        #{applyTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="paidTotal != null">
+        #{paidTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="feeDetail != null">
+        #{feeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="compensateTable != null">
+        #{compensateTable,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="claimState != null">
+        #{claimState,jdbcType=VARCHAR},
+      </if>
+      <if test="claimMessage != null">
+        #{claimMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="isTransfered != null">
+        #{isTransfered,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeName != null">
+        #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAccount != null">
+        #{payeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeCaseId != null">
+        #{judgeCaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="disabilityGradeId != null">
+        #{disabilityGradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="courtCode != null">
+        #{courtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefName != null">
+        #{chiefName,jdbcType=VARCHAR},
+      </if>
+      <if test="clerkName != null">
+        #{clerkName,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="convergeUpdateDate != null">
+        #{convergeUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="convergeDate != null">
+        #{convergeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=CHAR},
+      </if>
+      <if test="zzrSjy != null">
+        #{zzrSjy,jdbcType=VARCHAR},
+      </if>
+      <if test="zzrCbr != null">
+        #{zzrCbr,jdbcType=VARCHAR},
+      </if>
+      <if test="ahdm != null">
+        #{ahdm,jdbcType=VARCHAR},
+      </if>
+      <if test="beforePersonnelId != null">
+        #{beforePersonnelId,jdbcType=INTEGER},
+      </if>
+      <if test="beforePersonnelName != null">
+        #{beforePersonnelName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustCityCode != null">
+        #{adjustCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustCityName != null">
+        #{adjustCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustType != null">
+        #{adjustType,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustReturn != null">
+        #{adjustReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustReturnRemark != null">
+        #{adjustReturnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPersonId != null">
+        #{adjustPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="courtDate != null">
+        #{courtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemno != null">
+        #{systemno,jdbcType=VARCHAR},
+      </if>
+      <if test="vinno != null">
+        #{vinno,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustPointCode != null">
+        #{beforeAdjustPointCode,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustPointName != null">
+        #{beforeAdjustPointName,jdbcType=VARCHAR},
+      </if>
+      <if test="acquireMessageInfo != null">
+        #{acquireMessageInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="maoFlag != null">
+        #{maoFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="returnUrl != null">
+        #{returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mediateEnd != null">
+        #{mediateEnd,jdbcType=CHAR},
+      </if>
+      <if test="isSendAppraisal != null">
+        #{isSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="isAppraisalFinish != null">
+        #{isAppraisalFinish,jdbcType=CHAR},
+      </if>
+      <if test="oldIsSendAppraisal != null">
+        #{oldIsSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="oldIsAppraisalFinish != null">
+        #{oldIsAppraisalFinish,jdbcType=CHAR},
+      </if>
+      <if test="saccidentCode != null">
+        #{saccidentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustEndDate != null">
+        #{adjustEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="explainContent != null">
+        #{explainContent,jdbcType=VARCHAR},
+      </if>
+      <if test="causes != null">
+        #{causes,jdbcType=VARCHAR},
+      </if>
+      <if test="caseEndDate != null">
+        #{caseEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="litigationFlag != null">
+        #{litigationFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="platForm != null">
+        #{platForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dzah != null">
+        #{dzah,jdbcType=VARCHAR},
+      </if>
+      <if test="ajbs != null">
+        #{ajbs,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentDate != null">
+        #{accidentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accidentType != null">
+        #{accidentType,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="sufferNature != null">
+        #{sufferNature,jdbcType=VARCHAR},
+      </if>
+      <if test="bigAdjustId != null">
+        #{bigAdjustId,jdbcType=VARCHAR},
+      </if>
+      <if test="casePoolMode != null">
+        #{casePoolMode,jdbcType=VARCHAR},
+      </if>
+      <if test="litigationRequest != null">
+        #{litigationRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="platformOrigin != null">
+        #{platformOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="targetMoney != null">
+        #{targetMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signCode != null">
+        #{signCode,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustOrgCode != null">
+        #{beforeAdjustOrgCode,jdbcType=INTEGER},
+      </if>
+      <if test="beforeAdjustOrgName != null">
+        #{beforeAdjustOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTest != null">
+        #{isTest,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyAdjustInfo">
+    update jy_adjust_info
+    <set>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="regulationNo != null">
+        REGULATION_NO = #{regulationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="lawMoney != null">
+        LAW_MONEY = #{lawMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="lawOrgId != null">
+        LAW_ORG_ID = #{lawOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="lawOrgName != null">
+        LAW_ORG_NAME = #{lawOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustOrgCode != null">
+        ADJUST_ORG_CODE = #{adjustOrgCode,jdbcType=INTEGER},
+      </if>
+      <if test="adjustOrgName != null">
+        ADJUST_ORG_NAME = #{adjustOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPointCode != null">
+        ADJUST_POINT_CODE = #{adjustPointCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPointName != null">
+        ADJUST_POINT_NAME = #{adjustPointName,jdbcType=VARCHAR},
+      </if>
+      <if test="reason != null">
+        REASON = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustResult != null">
+        ADJUST_RESULT = #{adjustResult,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustResultRemark != null">
+        ADJUST_RESULT_REMARK = #{adjustResultRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="applicant != null">
+        APPLICANT = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="respondent != null">
+        RESPONDENT = #{respondent,jdbcType=VARCHAR},
+      </if>
+      <if test="factReason != null">
+        FACT_REASON = #{factReason,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        PAY_DATE = #{payDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adjustDate != null">
+        ADJUST_DATE = #{adjustDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createBy != null">
+        CREATE_BY = #{createBy,jdbcType=INTEGER},
+      </if>
+      <if test="adjustName != null">
+        ADJUST_NAME = #{adjustName,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isReturn != null">
+        IS_RETURN = #{isReturn,jdbcType=CHAR},
+      </if>
+      <if test="receiveDate != null">
+        RECEIVE_DATE = #{receiveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lawNo != null">
+        LAW_NO = #{lawNo,jdbcType=VARCHAR},
+      </if>
+      <if test="filingDate != null">
+        FILING_DATE = #{filingDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="filingName != null">
+        FILING_NAME = #{filingName,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefJudgeId != null">
+        CHIEF_JUDGE_ID = #{chiefJudgeId,jdbcType=INTEGER},
+      </if>
+      <if test="clerkId != null">
+        CLERK_ID = #{clerkId,jdbcType=INTEGER},
+      </if>
+      <if test="courtId != null">
+        COURT_ID = #{courtId,jdbcType=INTEGER},
+      </if>
+      <if test="courtNum != null">
+        COURT_NUM = #{courtNum,jdbcType=VARCHAR},
+      </if>
+      <if test="regionName != null">
+        REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      </if>
+      <if test="standardYear != null">
+        STANDARD_YEAR = #{standardYear,jdbcType=VARCHAR},
+      </if>
+      <if test="household != null">
+        HOUSEHOLD = #{household,jdbcType=CHAR},
+      </if>
+      <if test="deathDate != null">
+        DEATH_DATE = #{deathDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="compensateRate != null">
+        COMPENSATE_RATE = #{compensateRate,jdbcType=DOUBLE},
+      </if>
+      <if test="compensateStandard != null">
+        COMPENSATE_STANDARD = #{compensateStandard,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTotal != null">
+        APPLY_TOTAL = #{applyTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="paidTotal != null">
+        PAID_TOTAL = #{paidTotal,jdbcType=DOUBLE},
+      </if>
+      <if test="feeDetail != null">
+        FEE_DETAIL = #{feeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="compensateTable != null">
+        COMPENSATE_TABLE = #{compensateTable,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="claimState != null">
+        CLAIM_STATE = #{claimState,jdbcType=VARCHAR},
+      </if>
+      <if test="claimMessage != null">
+        CLAIM_MESSAGE = #{claimMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="isTransfered != null">
+        IS_TRANSFERED = #{isTransfered,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeName != null">
+        PAYEE_NAME = #{payeeName,jdbcType=VARCHAR},
+      </if>
+      <if test="payeeAccount != null">
+        PAYEE_ACCOUNT = #{payeeAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="openingBank != null">
+        OPENING_BANK = #{openingBank,jdbcType=VARCHAR},
+      </if>
+      <if test="judgeCaseId != null">
+        JUDGE_CASE_ID = #{judgeCaseId,jdbcType=VARCHAR},
+      </if>
+      <if test="disabilityGradeId != null">
+        DISABILITY_GRADE_ID = #{disabilityGradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="courtCode != null">
+        COURT_CODE = #{courtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="chiefName != null">
+        CHIEF_NAME = #{chiefName,jdbcType=VARCHAR},
+      </if>
+      <if test="clerkName != null">
+        CLERK_NAME = #{clerkName,jdbcType=VARCHAR},
+      </if>
+      <if test="courtName != null">
+        COURT_NAME = #{courtName,jdbcType=VARCHAR},
+      </if>
+      <if test="convergeUpdateDate != null">
+        CONVERGE_UPDATE_DATE = #{convergeUpdateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="convergeDate != null">
+        CONVERGE_DATE = #{convergeDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="step != null">
+        STEP = #{step,jdbcType=CHAR},
+      </if>
+      <if test="zzrSjy != null">
+        ZZR_SJY = #{zzrSjy,jdbcType=VARCHAR},
+      </if>
+      <if test="zzrCbr != null">
+        ZZR_CBR = #{zzrCbr,jdbcType=VARCHAR},
+      </if>
+      <if test="ahdm != null">
+        AHDM = #{ahdm,jdbcType=VARCHAR},
+      </if>
+      <if test="beforePersonnelId != null">
+        BEFORE_PERSONNEL_ID = #{beforePersonnelId,jdbcType=INTEGER},
+      </if>
+      <if test="beforePersonnelName != null">
+        BEFORE_PERSONNEL_NAME = #{beforePersonnelName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustCityCode != null">
+        ADJUST_CITY_CODE = #{adjustCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustCityName != null">
+        ADJUST_CITY_NAME = #{adjustCityName,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustType != null">
+        ADJUST_TYPE = #{adjustType,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustReturn != null">
+        ADJUST_RETURN = #{adjustReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustReturnRemark != null">
+        ADJUST_RETURN_REMARK = #{adjustReturnRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustPersonId != null">
+        ADJUST_PERSON_ID = #{adjustPersonId,jdbcType=INTEGER},
+      </if>
+      <if test="courtDate != null">
+        COURT_DATE = #{courtDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="systemno != null">
+        SYSTEMNO = #{systemno,jdbcType=VARCHAR},
+      </if>
+      <if test="vinno != null">
+        VINNO = #{vinno,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustPointCode != null">
+        BEFORE_ADJUST_POINT_CODE = #{beforeAdjustPointCode,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustPointName != null">
+        BEFORE_ADJUST_POINT_NAME = #{beforeAdjustPointName,jdbcType=VARCHAR},
+      </if>
+      <if test="acquireMessageInfo != null">
+        ACQUIRE_MESSAGE_INFO = #{acquireMessageInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="maoFlag != null">
+        MAO_FLAG = #{maoFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="returnUrl != null">
+        RETURN_URL = #{returnUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null">
+        END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mediateEnd != null">
+        MEDIATE_END = #{mediateEnd,jdbcType=CHAR},
+      </if>
+      <if test="isSendAppraisal != null">
+        IS_SEND_APPRAISAL = #{isSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="isAppraisalFinish != null">
+        IS_APPRAISAL_FINISH = #{isAppraisalFinish,jdbcType=CHAR},
+      </if>
+      <if test="oldIsSendAppraisal != null">
+        OLD_IS_SEND_APPRAISAL = #{oldIsSendAppraisal,jdbcType=CHAR},
+      </if>
+      <if test="oldIsAppraisalFinish != null">
+        OLD_IS_APPRAISAL_FINISH = #{oldIsAppraisalFinish,jdbcType=CHAR},
+      </if>
+      <if test="saccidentCode != null">
+        SACCIDENT_CODE = #{saccidentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="adjustEndDate != null">
+        ADJUST_END_DATE = #{adjustEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="explainContent != null">
+        EXPLAIN_CONTENT = #{explainContent,jdbcType=VARCHAR},
+      </if>
+      <if test="causes != null">
+        CAUSES = #{causes,jdbcType=VARCHAR},
+      </if>
+      <if test="caseEndDate != null">
+        CASE_END_DATE = #{caseEndDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="litigationFlag != null">
+        LITIGATION_FLAG = #{litigationFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="platForm != null">
+        PLAT_FORM = #{platForm,jdbcType=VARCHAR},
+      </if>
+      <if test="dzah != null">
+        DZAH = #{dzah,jdbcType=VARCHAR},
+      </if>
+      <if test="ajbs != null">
+        ajbs = #{ajbs,jdbcType=VARCHAR},
+      </if>
+      <if test="accidentDate != null">
+        accident_date = #{accidentDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accidentType != null">
+        ACCIDENT_TYPE = #{accidentType,jdbcType=VARCHAR},
+      </if>
+      <if test="responsibility != null">
+        RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      </if>
+      <if test="sufferNature != null">
+        SUFFER_NATURE = #{sufferNature,jdbcType=VARCHAR},
+      </if>
+      <if test="bigAdjustId != null">
+        BIG_ADJUST_ID = #{bigAdjustId,jdbcType=VARCHAR},
+      </if>
+      <if test="casePoolMode != null">
+        CASE_POOL_MODE = #{casePoolMode,jdbcType=VARCHAR},
+      </if>
+      <if test="litigationRequest != null">
+        LITIGATION_REQUEST = #{litigationRequest,jdbcType=VARCHAR},
+      </if>
+      <if test="platformOrigin != null">
+        PLATFORM_ORIGIN = #{platformOrigin,jdbcType=VARCHAR},
+      </if>
+      <if test="targetMoney != null">
+        TARGET_MONEY = #{targetMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="updateDate != null">
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signCode != null">
+        SIGN_CODE = #{signCode,jdbcType=VARCHAR},
+      </if>
+      <if test="beforeAdjustOrgCode != null">
+        BEFORE_ADJUST_ORG_CODE = #{beforeAdjustOrgCode,jdbcType=INTEGER},
+      </if>
+      <if test="beforeAdjustOrgName != null">
+        BEFORE_ADJUST_ORG_NAME = #{beforeAdjustOrgName,jdbcType=VARCHAR},
+      </if>
+      <if test="isTest != null">
+        IS_TEST = #{isTest,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyAdjustInfo">
+    update jy_adjust_info
+    set SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      REGULATION_NO = #{regulationNo,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      LAW_MONEY = #{lawMoney,jdbcType=DOUBLE},
+      LAW_ORG_ID = #{lawOrgId,jdbcType=INTEGER},
+      LAW_ORG_NAME = #{lawOrgName,jdbcType=VARCHAR},
+      ADJUST_ORG_CODE = #{adjustOrgCode,jdbcType=INTEGER},
+      ADJUST_ORG_NAME = #{adjustOrgName,jdbcType=VARCHAR},
+      ADJUST_POINT_CODE = #{adjustPointCode,jdbcType=VARCHAR},
+      ADJUST_POINT_NAME = #{adjustPointName,jdbcType=VARCHAR},
+      REASON = #{reason,jdbcType=VARCHAR},
+      ADJUST_RESULT = #{adjustResult,jdbcType=VARCHAR},
+      ADJUST_RESULT_REMARK = #{adjustResultRemark,jdbcType=VARCHAR},
+      APPLICANT = #{applicant,jdbcType=VARCHAR},
+      RESPONDENT = #{respondent,jdbcType=VARCHAR},
+      FACT_REASON = #{factReason,jdbcType=VARCHAR},
+      PAY_DATE = #{payDate,jdbcType=TIMESTAMP},
+      ADJUST_DATE = #{adjustDate,jdbcType=TIMESTAMP},
+      CREATE_BY = #{createBy,jdbcType=INTEGER},
+      ADJUST_NAME = #{adjustName,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      IS_RETURN = #{isReturn,jdbcType=CHAR},
+      RECEIVE_DATE = #{receiveDate,jdbcType=TIMESTAMP},
+      LAW_NO = #{lawNo,jdbcType=VARCHAR},
+      FILING_DATE = #{filingDate,jdbcType=TIMESTAMP},
+      FILING_NAME = #{filingName,jdbcType=VARCHAR},
+      CHIEF_JUDGE_ID = #{chiefJudgeId,jdbcType=INTEGER},
+      CLERK_ID = #{clerkId,jdbcType=INTEGER},
+      COURT_ID = #{courtId,jdbcType=INTEGER},
+      COURT_NUM = #{courtNum,jdbcType=VARCHAR},
+      REGION_NAME = #{regionName,jdbcType=VARCHAR},
+      STANDARD_YEAR = #{standardYear,jdbcType=VARCHAR},
+      HOUSEHOLD = #{household,jdbcType=CHAR},
+      DEATH_DATE = #{deathDate,jdbcType=TIMESTAMP},
+      COMPENSATE_RATE = #{compensateRate,jdbcType=DOUBLE},
+      COMPENSATE_STANDARD = #{compensateStandard,jdbcType=VARCHAR},
+      APPLY_TOTAL = #{applyTotal,jdbcType=DOUBLE},
+      PAID_TOTAL = #{paidTotal,jdbcType=DOUBLE},
+      FEE_DETAIL = #{feeDetail,jdbcType=VARCHAR},
+      COMPENSATE_TABLE = #{compensateTable,jdbcType=VARCHAR},
+      REGION_CODE = #{regionCode,jdbcType=VARCHAR},
+      CLAIM_STATE = #{claimState,jdbcType=VARCHAR},
+      CLAIM_MESSAGE = #{claimMessage,jdbcType=VARCHAR},
+      IS_TRANSFERED = #{isTransfered,jdbcType=VARCHAR},
+      PAYEE_NAME = #{payeeName,jdbcType=VARCHAR},
+      PAYEE_ACCOUNT = #{payeeAccount,jdbcType=VARCHAR},
+      OPENING_BANK = #{openingBank,jdbcType=VARCHAR},
+      JUDGE_CASE_ID = #{judgeCaseId,jdbcType=VARCHAR},
+      DISABILITY_GRADE_ID = #{disabilityGradeId,jdbcType=VARCHAR},
+      COURT_CODE = #{courtCode,jdbcType=VARCHAR},
+      CHIEF_NAME = #{chiefName,jdbcType=VARCHAR},
+      CLERK_NAME = #{clerkName,jdbcType=VARCHAR},
+      COURT_NAME = #{courtName,jdbcType=VARCHAR},
+      CONVERGE_UPDATE_DATE = #{convergeUpdateDate,jdbcType=TIMESTAMP},
+      CONVERGE_DATE = #{convergeDate,jdbcType=TIMESTAMP},
+      STEP = #{step,jdbcType=CHAR},
+      ZZR_SJY = #{zzrSjy,jdbcType=VARCHAR},
+      ZZR_CBR = #{zzrCbr,jdbcType=VARCHAR},
+      AHDM = #{ahdm,jdbcType=VARCHAR},
+      BEFORE_PERSONNEL_ID = #{beforePersonnelId,jdbcType=INTEGER},
+      BEFORE_PERSONNEL_NAME = #{beforePersonnelName,jdbcType=VARCHAR},
+      ADJUST_CITY_CODE = #{adjustCityCode,jdbcType=VARCHAR},
+      ADJUST_CITY_NAME = #{adjustCityName,jdbcType=VARCHAR},
+      ADJUST_TYPE = #{adjustType,jdbcType=VARCHAR},
+      ADJUST_RETURN = #{adjustReturn,jdbcType=VARCHAR},
+      ADJUST_RETURN_REMARK = #{adjustReturnRemark,jdbcType=VARCHAR},
+      ADJUST_PERSON_ID = #{adjustPersonId,jdbcType=INTEGER},
+      COURT_DATE = #{courtDate,jdbcType=TIMESTAMP},
+      SYSTEMNO = #{systemno,jdbcType=VARCHAR},
+      VINNO = #{vinno,jdbcType=VARCHAR},
+      BEFORE_ADJUST_POINT_CODE = #{beforeAdjustPointCode,jdbcType=VARCHAR},
+      BEFORE_ADJUST_POINT_NAME = #{beforeAdjustPointName,jdbcType=VARCHAR},
+      ACQUIRE_MESSAGE_INFO = #{acquireMessageInfo,jdbcType=VARCHAR},
+      MAO_FLAG = #{maoFlag,jdbcType=VARCHAR},
+      RETURN_URL = #{returnUrl,jdbcType=VARCHAR},
+      END_DATE = #{endDate,jdbcType=TIMESTAMP},
+      MEDIATE_END = #{mediateEnd,jdbcType=CHAR},
+      IS_SEND_APPRAISAL = #{isSendAppraisal,jdbcType=CHAR},
+      IS_APPRAISAL_FINISH = #{isAppraisalFinish,jdbcType=CHAR},
+      OLD_IS_SEND_APPRAISAL = #{oldIsSendAppraisal,jdbcType=CHAR},
+      OLD_IS_APPRAISAL_FINISH = #{oldIsAppraisalFinish,jdbcType=CHAR},
+      SACCIDENT_CODE = #{saccidentCode,jdbcType=VARCHAR},
+      ADJUST_END_DATE = #{adjustEndDate,jdbcType=TIMESTAMP},
+      EXPLAIN_CONTENT = #{explainContent,jdbcType=VARCHAR},
+      CAUSES = #{causes,jdbcType=VARCHAR},
+      CASE_END_DATE = #{caseEndDate,jdbcType=TIMESTAMP},
+      LITIGATION_FLAG = #{litigationFlag,jdbcType=VARCHAR},
+      PLAT_FORM = #{platForm,jdbcType=VARCHAR},
+      DZAH = #{dzah,jdbcType=VARCHAR},
+      ajbs = #{ajbs,jdbcType=VARCHAR},
+      accident_date = #{accidentDate,jdbcType=TIMESTAMP},
+      ACCIDENT_TYPE = #{accidentType,jdbcType=VARCHAR},
+      RESPONSIBILITY = #{responsibility,jdbcType=VARCHAR},
+      SUFFER_NATURE = #{sufferNature,jdbcType=VARCHAR},
+      BIG_ADJUST_ID = #{bigAdjustId,jdbcType=VARCHAR},
+      CASE_POOL_MODE = #{casePoolMode,jdbcType=VARCHAR},
+      LITIGATION_REQUEST = #{litigationRequest,jdbcType=VARCHAR},
+      PLATFORM_ORIGIN = #{platformOrigin,jdbcType=VARCHAR},
+      TARGET_MONEY = #{targetMoney,jdbcType=DOUBLE},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      SIGN_CODE = #{signCode,jdbcType=VARCHAR},
+      BEFORE_ADJUST_ORG_CODE = #{beforeAdjustOrgCode,jdbcType=INTEGER},
+      BEFORE_ADJUST_ORG_NAME = #{beforeAdjustOrgName,jdbcType=VARCHAR},
+      IS_TEST = #{isTest,jdbcType=CHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

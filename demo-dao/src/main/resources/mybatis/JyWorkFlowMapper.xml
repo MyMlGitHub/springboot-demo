@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ml.mapper.JyWorkFlowMapper">
+  <resultMap id="BaseResultMap" type="com.ml.po.JyWorkFlow">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+    <result column="OPERATOR_ID" jdbcType="INTEGER" property="operatorId" />
+    <result column="OPERATOR_NAME" jdbcType="VARCHAR" property="operatorName" />
+    <result column="ORG_CODE" jdbcType="VARCHAR" property="orgCode" />
+    <result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+    <result column="RESULT" jdbcType="CHAR" property="result" />
+    <result column="RESULT_NAME" jdbcType="VARCHAR" property="resultName" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="CREATE_DATE" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="JY_ADJUST_INFO_ID" jdbcType="INTEGER" property="jyAdjustInfoId" />
+    <result column="ACCIDENT_CODE" jdbcType="VARCHAR" property="accidentCode" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ml.po.JyWorkFlow">
+    <result column="TEMP_DATA" jdbcType="LONGVARCHAR" property="tempData" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, TYPE, SERIAL_NO, OPERATOR_ID, OPERATOR_NAME, ORG_CODE, ORG_NAME, RESULT, RESULT_NAME, 
+    REMARK, CREATE_DATE, JY_ADJUST_INFO_ID, ACCIDENT_CODE
+  </sql>
+  <sql id="Blob_Column_List">
+    TEMP_DATA
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from jy_work_flow
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from jy_work_flow
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ml.po.JyWorkFlow">
+    insert into jy_work_flow (ID, TYPE, SERIAL_NO, 
+      OPERATOR_ID, OPERATOR_NAME, ORG_CODE, 
+      ORG_NAME, RESULT, RESULT_NAME, 
+      REMARK, CREATE_DATE, JY_ADJUST_INFO_ID, 
+      ACCIDENT_CODE, TEMP_DATA)
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR}, 
+      #{operatorId,jdbcType=INTEGER}, #{operatorName,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{result,jdbcType=CHAR}, #{resultName,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{jyAdjustInfoId,jdbcType=INTEGER}, 
+      #{accidentCode,jdbcType=VARCHAR}, #{tempData,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ml.po.JyWorkFlow">
+    insert into jy_work_flow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID,
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME,
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE,
+      </if>
+      <if test="orgName != null">
+        ORG_NAME,
+      </if>
+      <if test="result != null">
+        RESULT,
+      </if>
+      <if test="resultName != null">
+        RESULT_NAME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID,
+      </if>
+      <if test="accidentCode != null">
+        ACCIDENT_CODE,
+      </if>
+      <if test="tempData != null">
+        TEMP_DATA,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null">
+        #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=CHAR},
+      </if>
+      <if test="resultName != null">
+        #{resultName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="accidentCode != null">
+        #{accidentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tempData != null">
+        #{tempData,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ml.po.JyWorkFlow">
+    update jy_work_flow
+    <set>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="operatorId != null">
+        OPERATOR_ID = #{operatorId,jdbcType=INTEGER},
+      </if>
+      <if test="operatorName != null">
+        OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        RESULT = #{result,jdbcType=CHAR},
+      </if>
+      <if test="resultName != null">
+        RESULT_NAME = #{resultName,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jyAdjustInfoId != null">
+        JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      </if>
+      <if test="accidentCode != null">
+        ACCIDENT_CODE = #{accidentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tempData != null">
+        TEMP_DATA = #{tempData,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ml.po.JyWorkFlow">
+    update jy_work_flow
+    set TYPE = #{type,jdbcType=VARCHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=INTEGER},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      RESULT = #{result,jdbcType=CHAR},
+      RESULT_NAME = #{resultName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      ACCIDENT_CODE = #{accidentCode,jdbcType=VARCHAR},
+      TEMP_DATA = #{tempData,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ml.po.JyWorkFlow">
+    update jy_work_flow
+    set TYPE = #{type,jdbcType=VARCHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      OPERATOR_ID = #{operatorId,jdbcType=INTEGER},
+      OPERATOR_NAME = #{operatorName,jdbcType=VARCHAR},
+      ORG_CODE = #{orgCode,jdbcType=VARCHAR},
+      ORG_NAME = #{orgName,jdbcType=VARCHAR},
+      RESULT = #{result,jdbcType=CHAR},
+      RESULT_NAME = #{resultName,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      JY_ADJUST_INFO_ID = #{jyAdjustInfoId,jdbcType=INTEGER},
+      ACCIDENT_CODE = #{accidentCode,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
