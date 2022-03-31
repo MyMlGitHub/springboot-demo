@@ -31,7 +31,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <starter.web.version>2.3.1.RELEASE</starter.web.version>
+        <starter.web.version>2.5.12</starter.web.version>
         <lombok.version>1.16.22</lombok.version>
         <fastjson.JSON.version>1.2.45</fastjson.JSON.version>
         <validation.version>2.0.1.Final</validation.version>
