@@ -33,7 +33,7 @@
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <starter.web.version>2.3.1.RELEASE</starter.web.version>
         <lombok.version>1.16.22</lombok.version>
-        <fastjson.JSON.version>1.2.45</fastjson.JSON.version>
+        <fastjson.JSON.version>1.2.83</fastjson.JSON.version>
         <validation.version>2.0.1.Final</validation.version>
         <mybatis.starter.version>1.3.2</mybatis.starter.version>
         <commons.net.version>3.6</commons.net.version>
